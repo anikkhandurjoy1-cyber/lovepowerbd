@@ -128,6 +128,31 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
   .menu-toggle{display:block !important;}
 }
 .menu-toggle{display:none;background:none;border:none;font-size:20px;cursor:pointer;}
+
+/* ===== Order cards ===== */
+.order-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.ocard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.ocard.new{border-color:var(--primary);box-shadow:0 0 0 1px rgba(124,58,237,.15);}
+.ocard-top{display:flex;align-items:flex-start;gap:10px;}
+.ocard-cb{margin-top:3px;}
+.ocard-head{flex:1;min-width:0;}
+.ocard-inv{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;}
+.ocard-name{font-size:16px;font-weight:800;line-height:1.2;margin-top:1px;}
+.ocard-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;}
+.obadge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.obadge.new{background:#DCFCE7;color:#166534;}
+.obadge.old{background:#EDE4FB;color:#5B21B6;}
+.ocard-amt{text-align:right;flex-shrink:0;}
+.ocard-amt .a{font-size:17px;font-weight:800;color:var(--primary);}
+.ocard-amt .t{font-size:10px;color:var(--muted);margin-top:2px;}
+.ocard-line{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:var(--text);}
+.ocard-line .ic{width:15px;flex-shrink:0;text-align:center;opacity:.7;}
+.ocard-line a{color:var(--primary);font-weight:600;}
+.ocard-prod{background:var(--surface);border-radius:8px;padding:8px 10px;font-size:12.5px;color:var(--text);}
+.ocard-ctrls{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ocard-ctrls select{width:100%;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:var(--surface);}
+.ocard-actions{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;}
+.ocard-actions .btn{flex:1;min-width:64px;text-align:center;}
 </style>
 </head>
 <body>
@@ -276,15 +301,10 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
       <button class="btn btn-outline btn-sm" id="printSelectedBtn">🖨️ Print Selected</button>
       <button class="btn btn-primary btn-sm" id="newOrderBtn">+ New Order</button>
     </div>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr>
-          <th><input type="checkbox" id="selectAllOrders"></th>
-          <th>Invoice</th><th>Customer</th><th>Product</th><th>Total</th><th>Courier</th><th>Date</th><th>Status</th><th>Action</th>
-        </tr></thead>
-        <tbody id="orderTable"></tbody>
-      </table>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:12px;color:var(--muted);">
+      <input type="checkbox" id="selectAllOrders"> সব সিলেক্ট করুন
     </div>
+    <div id="orderCards"></div>
   </div>
 
   <div class="page" id="pg-products">
@@ -1094,55 +1114,69 @@ function getFilteredOrders(){
 }
 
 function renderOrderTable(){
-  const tb = document.getElementById('orderTable');
+  const wrap = document.getElementById('orderCards');
   const list = getFilteredOrders();
-  if(list.length===0){ tb.innerHTML = '<tr><td colspan="9" class="empty-row">কোনো অর্ডার নেই</td></tr>'; return; }
-  tb.innerHTML = list.map(o=>{
+  if(list.length===0){ wrap.innerHTML = '<div class="empty-row" style="background:var(--card);border:1px solid var(--border);border-radius:12px;">কোনো অর্ডার নেই</div>'; return; }
+  wrap.className = 'order-cards';
+  wrap.innerHTML = list.map(o=>{
     const shortId = o.id.slice(-6).toUpperCase();
     const status = o.status || 'Processing';
-    const productSummary = (o.items||[]).map(i=>`${i.name} x${i.qty}`).join(', ');
+    const isNew = status === 'Processing';
+    const productSummary = (o.items||[]).map(i=>`${i.name} × ${i.qty}`).join(', ');
     const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
+    const addr = [o.address, o.zone, o.city].filter(Boolean).join(', ');
     return `
-      <tr>
-        <td><input type="checkbox" class="order-cb" value="${o.id}"></td>
-        <td>#${shortId}</td>
-        <td>${o.customerName||'—'}${o.isReturningCustomer?'<span class="returning-tag">পুরনো</span>':''}<br><span style="color:var(--muted);font-size:11px;">${o.phone||''}</span></td>
-        <td>${productSummary || '—'}</td>
-        <td>${tk(o.total)}</td>
-        <td>
-          <select class="courier-select" data-id="${o.id}">
-            <option value="">—</option>
-            ${couriers.map(c=>`<option value="${c.name}" ${o.courier===c.name?'selected':''}>${c.name}</option>`).join('')}
-          </select>
-        </td>
-        <td>${d.toLocaleDateString()}</td>
-        <td>
+      <div class="ocard${isNew?' new':''}">
+        <div class="ocard-top">
+          <input type="checkbox" class="order-cb ocard-cb" value="${o.id}">
+          <div class="ocard-head">
+            <div class="ocard-inv">#${shortId} • ${d.toLocaleDateString()} ${d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div>
+            <div class="ocard-name">${o.customerName||'—'}</div>
+            <div class="ocard-badges">
+              ${isNew?'<span class="obadge new">New</span>':''}
+              ${o.isReturningCustomer?'<span class="obadge old">পুরনো কাস্টমার</span>':''}
+            </div>
+          </div>
+          <div class="ocard-amt">
+            <div class="a">${tk(o.total)}</div>
+            <div class="t">${(o.items||[]).reduce((s,i)=>s+(i.qty||0),0)} টি পণ্য</div>
+          </div>
+        </div>
+
+        <div class="ocard-line"><span class="ic">📞</span><a href="tel:${o.phone||''}">${o.phone||'—'}</a></div>
+        <div class="ocard-line"><span class="ic">📍</span><span>${addr||'—'}</span></div>
+        <div class="ocard-prod">🛍️ ${productSummary || '—'}</div>
+
+        <div class="ocard-ctrls">
           <select class="status-select" data-id="${o.id}">
             ${['Processing','Payment Pending','On Hold','Invoiced','Delivered','Completed','Canceled'].map(s=>`<option value="${s}" ${status===s?'selected':''}>${s}</option>`).join('')}
           </select>
-        </td>
-        <td>
-          ${status==='Processing' || status==='Payment Pending' || status==='On Hold' ? `<button class="btn btn-primary btn-sm approve-order" data-id="${o.id}">✓ Approve</button>` : ''}
-          <button class="btn btn-outline btn-sm view-order" data-id="${o.id}">👁️</button>
-          <button class="btn btn-outline btn-sm edit-order" data-id="${o.id}">Edit</button>
-          <button class="btn btn-outline btn-sm print-order" data-id="${o.id}">🖨️</button>
-          <button class="btn btn-danger btn-sm del-order" data-id="${o.id}">Del</button>
-        </td>
-      </tr>
+          <select class="courier-select" data-id="${o.id}">
+            <option value="">কুরিয়ার —</option>
+            ${couriers.map(c=>`<option value="${c.name}" ${o.courier===c.name?'selected':''}>${c.name}</option>`).join('')}
+          </select>
+        </div>
+
+        <div class="ocard-actions">
+          <button class="btn btn-outline btn-sm view-order" data-id="${o.id}">👁️ দেখুন</button>
+          <button class="btn btn-outline btn-sm edit-order" data-id="${o.id}">✏️ Edit</button>
+          <button class="btn btn-outline btn-sm print-order" data-id="${o.id}">🖨️ Print</button>
+          <button class="btn btn-danger btn-sm del-order" data-id="${o.id}">🗑️</button>
+        </div>
+      </div>
     `;
   }).join('');
 
-  tb.querySelectorAll('.status-select').forEach(sel=>{
+  wrap.querySelectorAll('.status-select').forEach(sel=>{
     sel.addEventListener('change', ()=>updateOrder(sel.dataset.id, {status: sel.value}, true));
   });
-  tb.querySelectorAll('.courier-select').forEach(sel=>{
+  wrap.querySelectorAll('.courier-select').forEach(sel=>{
     sel.addEventListener('change', ()=>updateOrder(sel.dataset.id, {courier: sel.value}, false));
   });
-  tb.querySelectorAll('.approve-order').forEach(b=>b.addEventListener('click', ()=>updateOrder(b.dataset.id, {status:'Invoiced'}, false)));
-  tb.querySelectorAll('.view-order').forEach(b=>b.addEventListener('click', ()=>openViewOrderModal(b.dataset.id)));
-  tb.querySelectorAll('.edit-order').forEach(b=>b.addEventListener('click', ()=>openOrderEditModal(b.dataset.id)));
-  tb.querySelectorAll('.print-order').forEach(b=>b.addEventListener('click', ()=>printOrders([allOrders.find(o=>o.id===b.dataset.id)])));
-  tb.querySelectorAll('.del-order').forEach(b=>b.addEventListener('click', async ()=>{
+  wrap.querySelectorAll('.view-order').forEach(b=>b.addEventListener('click', ()=>openViewOrderModal(b.dataset.id)));
+  wrap.querySelectorAll('.edit-order').forEach(b=>b.addEventListener('click', ()=>openOrderEditModal(b.dataset.id)));
+  wrap.querySelectorAll('.print-order').forEach(b=>b.addEventListener('click', ()=>printOrders([allOrders.find(o=>o.id===b.dataset.id)])));
+  wrap.querySelectorAll('.del-order').forEach(b=>b.addEventListener('click', async ()=>{
     if(!confirm('এই অর্ডার মুছে ফেলতে চান?')) return;
     await deleteDoc(doc(db,'orders',b.dataset.id));
     toast('মুছে ফেলা হয়েছে');
