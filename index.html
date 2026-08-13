@@ -1135,9 +1135,12 @@ document.getElementById('placeOrderBtn').addEventListener('click', async ()=>{
       createdAt: serverTimestamp()
     });
 
-    // remove the incomplete-order draft now that checkout is complete
+    // Mark the incomplete-order draft as converted. We can't delete it from the
+    // storefront (customers aren't authenticated), so instead we flag it — the admin
+    // panel hides any draft that has been converted to a real order.
     if(incompleteOrderDocId){
-      deleteDoc(doc(db,'incomplete_orders', incompleteOrderDocId)).catch(()=>{});
+      setDoc(doc(db,'incomplete_orders', incompleteOrderDocId),
+        { converted: true, updatedAt: serverTimestamp() }, {merge:true}).catch(()=>{});
       incompleteOrderDocId = null;
       localStorage.removeItem('lp_incomplete_id');
     }
