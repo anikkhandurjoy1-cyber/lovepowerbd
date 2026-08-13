@@ -1440,7 +1440,13 @@ function renderCustomerTable(){
 let incompleteOrdersCache = [];
 onSnapshot(query(collection(db,'incomplete_orders'), orderBy('updatedAt','desc')), (snap)=>{
   incompleteOrdersCache = [];
-  snap.forEach(d=>incompleteOrdersCache.push({id:d.id, ...d.data()}));
+  // Skip drafts the customer already converted into a real order on the storefront —
+  // they aren't truly "incomplete" anymore, so they shouldn't show or count here.
+  snap.forEach(d=>{
+    const data = d.data();
+    if(data.converted === true) return;
+    incompleteOrdersCache.push({id:d.id, ...data});
+  });
   renderIncompleteTable();
   const badge = document.getElementById('navIncompleteBadge');
   if(incompleteOrdersCache.length>0){ badge.style.display='inline-block'; badge.textContent = incompleteOrdersCache.length; }
