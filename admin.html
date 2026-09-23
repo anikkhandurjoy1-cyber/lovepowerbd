@@ -129,30 +129,64 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
 }
 .menu-toggle{display:none;background:none;border:none;font-size:20px;cursor:pointer;}
 
-/* ===== Order cards ===== */
-.order-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
-.ocard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;}
-.ocard.new{border-color:var(--primary);box-shadow:0 0 0 1px rgba(124,58,237,.15);}
-.ocard-top{display:flex;align-items:flex-start;gap:10px;}
-.ocard-cb{margin-top:3px;}
-.ocard-head{flex:1;min-width:0;}
-.ocard-inv{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;}
-.ocard-name{font-size:16px;font-weight:800;line-height:1.2;margin-top:1px;}
-.ocard-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;}
-.obadge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
-.obadge.new{background:#DCFCE7;color:#166534;}
-.obadge.old{background:#EDE4FB;color:#5B21B6;}
-.ocard-amt{text-align:right;flex-shrink:0;}
-.ocard-amt .a{font-size:17px;font-weight:800;color:var(--primary);}
-.ocard-amt .t{font-size:10px;color:var(--muted);margin-top:2px;}
-.ocard-line{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:var(--text);}
-.ocard-line .ic{width:15px;flex-shrink:0;text-align:center;opacity:.7;}
-.ocard-line a{color:var(--primary);font-weight:600;}
-.ocard-prod{background:var(--surface);border-radius:8px;padding:8px 10px;font-size:12.5px;color:var(--text);}
-.ocard-ctrls{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.ocard-ctrls select{width:100%;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:var(--surface);}
-.ocard-actions{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;}
-.ocard-actions .btn{flex:1;min-width:64px;text-align:center;}
+/* ===== Order rows (MetroBD style) ===== */
+.olist{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow-x:auto;}
+.orow{display:grid;grid-template-columns:26px 96px minmax(160px,1.5fr) minmax(160px,1.4fr) 82px 104px 78px 118px 146px;
+  gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--border);font-size:12.5px;}
+.orow:first-child{border-top:none;}
+.orow.head{background:var(--surface);font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;padding:10px 14px;}
+.orow.new{background:linear-gradient(90deg,rgba(124,58,237,.05),transparent 40%);}
+.orow:not(.head):hover{background:#FAF8FF;}
+.o-inv{font-weight:800;color:var(--primary);font-size:12.5px;letter-spacing:.2px;}
+.o-time{font-size:11px;color:var(--muted);margin-top:1px;}
+.o-new{display:inline-block;margin-top:4px;background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:1px 8px;border-radius:9px;}
+.o-name{font-weight:800;font-size:13.5px;line-height:1.25;}
+.o-old{display:inline-block;margin-left:5px;background:#EDE4FB;color:#5B21B6;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:8px;vertical-align:middle;}
+.o-phone{display:block;margin-top:3px;color:var(--text);font-weight:600;text-decoration:none;}
+.o-phone::before{content:"📞 ";}
+.o-addr{margin-top:2px;color:var(--muted);font-size:11.5px;line-height:1.35;}
+.o-addr::before{content:"📍 ";}
+.o-prod{display:flex;flex-direction:column;gap:6px;}
+.o-item{display:flex;align-items:center;gap:8px;}
+.o-item img{width:36px;height:36px;border-radius:7px;object-fit:cover;background:var(--surface);flex-shrink:0;border:1px solid var(--border);}
+.o-item span{line-height:1.3;}
+.o-total{font-weight:800;font-size:14px;}
+.o-date{color:var(--muted);font-size:11.5px;}
+.orow select{width:100%;padding:6px 7px;border:1px solid var(--border);border-radius:8px;font-size:11.5px;background:var(--card);}
+.st-sel{font-weight:700;border-radius:20px !important;text-align:center;}
+.st-Processing{background:#EDE4FB !important;color:#5B21B6;border-color:#D8C8F7 !important;}
+.st-PaymentPending{background:#FEF3C7 !important;color:#92400E;border-color:#FCE3A0 !important;}
+.st-OnHold{background:#FFEDD5 !important;color:#9A3412;border-color:#FED7AA !important;}
+.st-Invoiced{background:#DBEAFE !important;color:#1E40AF;border-color:#BFDBFE !important;}
+.st-Delivered{background:#CCFBF1 !important;color:#115E59;border-color:#99F6E4 !important;}
+.st-Completed{background:#DCFCE7 !important;color:#166534;border-color:#BBF7D0 !important;}
+.st-Canceled{background:#FEE2E2 !important;color:#991B1B;border-color:#FECACA !important;}
+.o-acts{display:flex;gap:5px;justify-content:flex-end;}
+.o-acts button{width:32px;height:30px;border:none;border-radius:7px;cursor:pointer;font-size:13px;color:#fff;}
+.o-acts .a-view{background:#7C3AED;} .o-acts .a-edit{background:#E11D48;}
+.o-acts .a-print{background:#2563EB;} .o-acts .a-del{background:#475569;}
+.o-acts button:hover{filter:brightness(1.1);}
+.o-more{text-align:center;padding:14px;}
+.o-count{font-size:12px;color:var(--muted);margin:0 2px 8px;}
+.m-lbl{display:none;}
+
+/* Tablet/mobile: each row becomes a compact card */
+@media(max-width:1280px){
+  .orow.head{display:none;}
+  .orow{grid-template-columns:30px 1fr 1fr;grid-template-areas:
+    "cb inv total" "cb cust cust" "cb prod prod" "cb status courier" "cb acts acts";row-gap:9px;}
+  .orow > .c-cb{grid-area:cb;align-self:start;}
+  .orow > .c-inv{grid-area:inv;}
+  .orow > .c-total{grid-area:total;text-align:right;align-self:start;}
+  .orow > .c-cust{grid-area:cust;}
+  .orow > .c-prod{grid-area:prod;background:var(--surface);border-radius:8px;padding:8px;}
+  .orow > .c-status{grid-area:status;}
+  .orow > .c-courier{grid-area:courier;}
+  .orow > .c-acts{grid-area:acts;}
+  .orow > .c-date{display:none;}
+  .o-acts{justify-content:flex-start;}
+  .o-acts button{width:auto;flex:1;height:34px;}
+}
 </style>
 </head>
 <body>
@@ -304,7 +338,9 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:12px;color:var(--muted);">
       <input type="checkbox" id="selectAllOrders"> সব সিলেক্ট করুন
     </div>
+    <div class="o-count" id="orderCount"></div>
     <div id="orderCards"></div>
+    <div class="o-more"><button class="btn btn-outline" id="loadMoreOrdersBtn" style="display:none;">আরও দেখুন</button></div>
   </div>
 
   <div class="page" id="pg-products">
@@ -717,7 +753,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
   getFirestore, collection, addDoc, updateDoc, deleteDoc, doc,
-  onSnapshot, query, orderBy, serverTimestamp, writeBatch, setDoc
+  onSnapshot, query, orderBy, serverTimestamp, writeBatch, setDoc,
+  limit, startAfter, getDocs, where, Timestamp,
+  getCountFromServer, getAggregateFromServer, sum
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -1060,21 +1098,62 @@ let firstOrderLoad = true;
 let knownOrderIds = new Set();
 let curStatusFilter = 'all';
 
-onSnapshot(query(collection(db,'orders'), orderBy('createdAt','desc')), (snap)=>{
-  allOrders = [];
+// ---------- Orders: paginated so the panel stays fast with thousands of orders ----------
+// Only the newest ORDER_PAGE orders are kept live; older ones load on demand.
+const ORDER_PAGE = 100;
+const ordersMap = new Map();      // id -> order (live page + any older pages loaded)
+let oldestOrderSnap = null;       // cursor for "load more"
+let noMoreOrders = false;
+let loadingMoreOrders = false;
+
+function orderTime(o){
+  return o.createdAt && o.createdAt.toMillis ? o.createdAt.toMillis() : Date.now();
+}
+function rebuildOrderList(){
+  allOrders = [...ordersMap.values()].sort((a,b)=>orderTime(b)-orderTime(a));
+}
+function refreshOrderViews(){
+  rebuildOrderList();
+  renderOrderTable();
+  scheduleStatsRefresh();
+  renderCustomerTable();
+}
+
+onSnapshot(query(collection(db,'orders'), orderBy('createdAt','desc'), limit(ORDER_PAGE)), (snap)=>{
   let newCame = false;
-  snap.forEach(d=>{
-    const o = {id:d.id, ...d.data()};
-    allOrders.push(o);
-    if(!firstOrderLoad && !knownOrderIds.has(o.id)) newCame = true;
+  snap.docChanges().forEach(ch=>{
+    // 'removed' also fires when an order just slides out of the live window,
+    // so we keep it in the map; real deletes are removed locally in the delete handler.
+    if(ch.type === 'removed') return;
+    const o = {id:ch.doc.id, ...ch.doc.data()};
+    if(!firstOrderLoad && ch.type === 'added' && !knownOrderIds.has(o.id)) newCame = true;
     knownOrderIds.add(o.id);
+    ordersMap.set(o.id, o);
   });
+  if(firstOrderLoad){
+    oldestOrderSnap = snap.docs[snap.docs.length-1] || null;
+    noMoreOrders = snap.docs.length < ORDER_PAGE;
+  }
   if(newCame){ playBeep(); toast('🔔 নতুন অর্ডার এসেছে!'); }
   firstOrderLoad = false;
-  renderOrderTable();
-  updateDashboardStats();
-  renderCustomerTable();
-});
+  refreshOrderViews();
+}, (err)=>{ console.error(err); toast('অর্ডার লোড করতে সমস্যা হয়েছে'); });
+
+async function loadMoreOrders(){
+  if(loadingMoreOrders || noMoreOrders || !oldestOrderSnap) return;
+  loadingMoreOrders = true;
+  const btn = document.getElementById('loadMoreOrdersBtn');
+  if(btn) btn.textContent = 'লোড হচ্ছে...';
+  try{
+    const snap = await getDocs(query(collection(db,'orders'), orderBy('createdAt','desc'),
+      startAfter(oldestOrderSnap), limit(ORDER_PAGE)));
+    snap.forEach(d=>{ ordersMap.set(d.id, {id:d.id, ...d.data()}); knownOrderIds.add(d.id); });
+    if(snap.docs.length) oldestOrderSnap = snap.docs[snap.docs.length-1];
+    noMoreOrders = snap.docs.length < ORDER_PAGE;
+    refreshOrderViews();
+  }catch(e){ console.error(e); toast('আরও অর্ডার লোড করতে সমস্যা'); }
+  loadingMoreOrders = false;
+}
 
 document.querySelectorAll('.stab').forEach(tab=>{
   tab.addEventListener('click', ()=>{
@@ -1113,58 +1192,81 @@ function getFilteredOrders(){
   });
 }
 
+// Customer-typed text (name, address, notes) is escaped before it goes into innerHTML,
+// so an order form can never inject markup or scripts into the admin panel.
+function esc(v){
+  return String(v==null?'':v).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function thumbUrl(url){
+  if(!url || !String(url).includes('/upload/')) return url || '';
+  return String(url).replace('/upload/','/upload/f_auto,q_auto,w_80,h_80,c_fill/');
+}
+const ORDER_STATUSES = ['Processing','Payment Pending','On Hold','Invoiced','Delivered','Completed','Canceled'];
+
 function renderOrderTable(){
   const wrap = document.getElementById('orderCards');
   const list = getFilteredOrders();
-  if(list.length===0){ wrap.innerHTML = '<div class="empty-row" style="background:var(--card);border:1px solid var(--border);border-radius:12px;">কোনো অর্ডার নেই</div>'; return; }
-  wrap.className = 'order-cards';
-  wrap.innerHTML = list.map(o=>{
+  const moreBtn = document.getElementById('loadMoreOrdersBtn');
+  if(moreBtn){ moreBtn.style.display = noMoreOrders ? 'none' : 'inline-block'; moreBtn.textContent = 'আরও দেখুন'; }
+  const countEl = document.getElementById('orderCount');
+  if(countEl) countEl.textContent = `${list.length} টি অর্ডার দেখানো হচ্ছে (লোড হয়েছে ${allOrders.length} টি${noMoreOrders?'':' — পুরনোগুলো দেখতে নিচে "আরও দেখুন"'})`;
+
+  if(list.length===0){
+    wrap.className = '';
+    wrap.innerHTML = '<div class="empty-row" style="background:var(--card);border:1px solid var(--border);border-radius:12px;">কোনো অর্ডার নেই</div>';
+    return;
+  }
+  wrap.className = 'olist';
+  const head = `<div class="orow head">
+    <div></div><div>Invoice</div><div>Customer</div><div>Product</div><div>Total</div>
+    <div>Courier</div><div>Date</div><div>Status</div><div style="text-align:right;">Action</div></div>`;
+
+  wrap.innerHTML = head + list.map(o=>{
     const shortId = o.id.slice(-6).toUpperCase();
     const status = o.status || 'Processing';
     const isNew = status === 'Processing';
-    const productSummary = (o.items||[]).map(i=>`${i.name} × ${i.qty}`).join(', ');
     const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
     const addr = [o.address, o.zone, o.city].filter(Boolean).join(', ');
+    const items = (o.items||[]).map(i=>`
+      <div class="o-item">
+        ${i.image ? `<img src="${esc(thumbUrl(i.image))}" alt="" loading="lazy">` : ''}
+        <span>${esc(i.name)} × ${Number(i.qty)||1}</span>
+      </div>`).join('') || '—';
+    const stClass = 'st-' + status.replace(/\s+/g,'');
     return `
-      <div class="ocard${isNew?' new':''}">
-        <div class="ocard-top">
-          <input type="checkbox" class="order-cb ocard-cb" value="${o.id}">
-          <div class="ocard-head">
-            <div class="ocard-inv">#${shortId} • ${d.toLocaleDateString()} ${d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div>
-            <div class="ocard-name">${o.customerName||'—'}</div>
-            <div class="ocard-badges">
-              ${isNew?'<span class="obadge new">New</span>':''}
-              ${o.isReturningCustomer?'<span class="obadge old">পুরনো কাস্টমার</span>':''}
-            </div>
-          </div>
-          <div class="ocard-amt">
-            <div class="a">${tk(o.total)}</div>
-            <div class="t">${(o.items||[]).reduce((s,i)=>s+(i.qty||0),0)} টি পণ্য</div>
-          </div>
+      <div class="orow${isNew?' new':''}">
+        <div class="c-cb"><input type="checkbox" class="order-cb" value="${o.id}"></div>
+        <div class="c-inv">
+          <div class="o-inv">#${shortId}</div>
+          <div class="o-time">${d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div>
+          ${isNew?'<span class="o-new">New</span>':''}
         </div>
-
-        <div class="ocard-line"><span class="ic">📞</span><a href="tel:${o.phone||''}">${o.phone||'—'}</a></div>
-        <div class="ocard-line"><span class="ic">📍</span><span>${addr||'—'}</span></div>
-        <div class="ocard-prod">🛍️ ${productSummary || '—'}</div>
-
-        <div class="ocard-ctrls">
-          <select class="status-select" data-id="${o.id}">
-            ${['Processing','Payment Pending','On Hold','Invoiced','Delivered','Completed','Canceled'].map(s=>`<option value="${s}" ${status===s?'selected':''}>${s}</option>`).join('')}
-          </select>
+        <div class="c-cust">
+          <div class="o-name">${esc(o.customerName)||'—'}${o.isReturningCustomer?'<span class="o-old">পুরনো</span>':''}</div>
+          <a class="o-phone" href="tel:${esc(o.phone)}">${esc(o.phone)||'—'}</a>
+          <div class="o-addr">${esc(addr)||'—'}</div>
+        </div>
+        <div class="c-prod"><div class="o-prod">${items}</div></div>
+        <div class="c-total"><div class="o-total">${tk(o.total)}</div></div>
+        <div class="c-courier">
           <select class="courier-select" data-id="${o.id}">
             <option value="">কুরিয়ার —</option>
-            ${couriers.map(c=>`<option value="${c.name}" ${o.courier===c.name?'selected':''}>${c.name}</option>`).join('')}
+            ${couriers.map(c=>`<option value="${esc(c.name)}" ${o.courier===c.name?'selected':''}>${esc(c.name)}</option>`).join('')}
           </select>
         </div>
-
-        <div class="ocard-actions">
-          <button class="btn btn-outline btn-sm view-order" data-id="${o.id}">👁️ দেখুন</button>
-          <button class="btn btn-outline btn-sm edit-order" data-id="${o.id}">✏️ Edit</button>
-          <button class="btn btn-outline btn-sm print-order" data-id="${o.id}">🖨️ Print</button>
-          <button class="btn btn-danger btn-sm del-order" data-id="${o.id}">🗑️</button>
+        <div class="c-date"><span class="o-date">${d.toLocaleDateString('en-CA')}</span></div>
+        <div class="c-status">
+          <select class="status-select st-sel ${stClass}" data-id="${o.id}">
+            ${ORDER_STATUSES.map(s=>`<option value="${s}" ${status===s?'selected':''}>${s}</option>`).join('')}
+          </select>
         </div>
-      </div>
-    `;
+        <div class="c-acts"><div class="o-acts">
+          <button class="a-view view-order" data-id="${o.id}" title="দেখুন">👁️</button>
+          <button class="a-edit edit-order" data-id="${o.id}" title="Edit">✏️</button>
+          <button class="a-print print-order" data-id="${o.id}" title="Print">🖨️</button>
+          <button class="a-del del-order" data-id="${o.id}" title="Delete">🗑️</button>
+        </div></div>
+      </div>`;
   }).join('');
 
   wrap.querySelectorAll('.status-select').forEach(sel=>{
@@ -1178,10 +1280,15 @@ function renderOrderTable(){
   wrap.querySelectorAll('.print-order').forEach(b=>b.addEventListener('click', ()=>printOrders([allOrders.find(o=>o.id===b.dataset.id)])));
   wrap.querySelectorAll('.del-order').forEach(b=>b.addEventListener('click', async ()=>{
     if(!confirm('এই অর্ডার মুছে ফেলতে চান?')) return;
-    await deleteDoc(doc(db,'orders',b.dataset.id));
-    toast('মুছে ফেলা হয়েছে');
+    try{
+      await deleteDoc(doc(db,'orders',b.dataset.id));
+      ordersMap.delete(b.dataset.id);
+      refreshOrderViews();
+      toast('মুছে ফেলা হয়েছে');
+    }catch(e){ console.error(e); toast('মুছতে সমস্যা হয়েছে'); }
   }));
 }
+document.getElementById('loadMoreOrdersBtn').addEventListener('click', loadMoreOrders);
 
 async function updateOrder(id, data, mayReduceInventory){
   try{
@@ -1197,8 +1304,12 @@ async function updateOrder(id, data, mayReduceInventory){
           }
         }
         await updateDoc(doc(db,'orders',id), {_stockReduced:true});
+        data = {...data, _stockReduced:true};
       }
     }
+    // Patch the local copy too — older (non-live) orders don't get snapshot updates.
+    const local = ordersMap.get(id);
+    if(local){ ordersMap.set(id, {...local, ...data}); refreshOrderViews(); }
     toast('আপডেট হয়েছে');
   }catch(e){ console.error(e); toast('সমস্যা হয়েছে'); }
 }
@@ -1212,9 +1323,17 @@ document.getElementById('bulkStatusBtn').addEventListener('click', async ()=>{
   if(ids.length===0){ toast('অর্ডার সিলেক্ট করুন'); return; }
   const newStatus = prompt('New status: Processing / Payment Pending / On Hold / Invoiced / Delivered / Completed / Canceled');
   if(!newStatus) return;
+  const valid = ['Processing','Payment Pending','On Hold','Invoiced','Delivered','Completed','Canceled'];
+  const picked = valid.find(v=>v.toLowerCase()===newStatus.trim().toLowerCase());
+  if(!picked){ toast('ভুল status — তালিকা থেকে হুবহু লিখুন'); return; }
   const batch = writeBatch(db);
-  ids.forEach(id=>batch.update(doc(db,'orders',id), {status:newStatus}));
-  try{ await batch.commit(); toast(`${ids.length} টি অর্ডার আপডেট হয়েছে`); }
+  ids.forEach(id=>batch.update(doc(db,'orders',id), {status:picked}));
+  try{
+    await batch.commit();
+    ids.forEach(id=>{ const o = ordersMap.get(id); if(o) ordersMap.set(id, {...o, status:picked}); });
+    refreshOrderViews();
+    toast(`${ids.length} টি অর্ডার আপডেট হয়েছে`);
+  }
   catch(e){ console.error(e); toast('সমস্যা হয়েছে'); }
 });
 
@@ -1250,10 +1369,10 @@ function printOrders(list){
       <div style="padding:20px;border-bottom:2px dashed #ccc;">
         <h2 style="color:#7C3AED;">LovePower</h2>
         <p>Invoice #${shortId} — ${new Date().toLocaleDateString()}</p>
-        <p><strong>Customer:</strong> ${o.customerName}<br><strong>Phone:</strong> ${o.phone}<br><strong>Address:</strong> ${o.address}</p>
+        <p><strong>Customer:</strong> ${esc(o.customerName)}<br><strong>Phone:</strong> ${esc(o.phone)}<br><strong>Address:</strong> ${esc(o.address)}</p>
         <table style="width:100%;border-collapse:collapse;margin-top:10px;">
           <tr><th style="border-bottom:1px solid #eee;text-align:left;padding:6px;">Item</th><th style="border-bottom:1px solid #eee;text-align:left;padding:6px;">Qty</th><th style="border-bottom:1px solid #eee;text-align:left;padding:6px;">Total</th></tr>
-          ${(o.items||[]).map(i=>`<tr><td style="padding:6px;">${i.name}</td><td style="padding:6px;">${i.qty}</td><td style="padding:6px;">${tk(i.price*i.qty)}</td></tr>`).join('')}
+          ${(o.items||[]).map(i=>`<tr><td style="padding:6px;">${esc(i.name)}</td><td style="padding:6px;">${i.qty}</td><td style="padding:6px;">${tk(i.price*i.qty)}</td></tr>`).join('')}
         </table>
         <p style="font-weight:bold;margin-top:8px;">Total: ${tk(o.total)}</p>
       </div>
@@ -1335,14 +1454,14 @@ function openViewOrderModal(id){
   if(!o) return;
   const shortId = o.id.slice(-6).toUpperCase();
   const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
-  const items = (o.items||[]).map(i=>`<tr><td>${i.name}</td><td>${i.qty}</td><td>${tk(i.price*i.qty)}</td></tr>`).join('');
+  const items = (o.items||[]).map(i=>`<tr><td>${esc(i.name)}</td><td>${Number(i.qty)||1}</td><td>${tk(i.price*i.qty)}</td></tr>`).join('');
   document.getElementById('viewOrderContent').innerHTML = `
     <p><strong>Invoice:</strong> #${shortId} &nbsp; <strong>Date:</strong> ${d.toLocaleString()}</p>
-    <p><strong>Customer:</strong> ${o.customerName||'—'} ${o.isReturningCustomer?'<span class="returning-tag">পুরনো কাস্টমার</span>':''}</p>
-    <p><strong>Phone:</strong> ${o.phone||'—'}</p>
-    <p><strong>Address:</strong> ${o.address||'—'} ${o.city?`(${o.city}${o.zone?', '+o.zone:''})`:''}</p>
+    <p><strong>Customer:</strong> ${esc(o.customerName)||'—'} ${o.isReturningCustomer?'<span class="returning-tag">পুরনো কাস্টমার</span>':''}</p>
+    <p><strong>Phone:</strong> ${esc(o.phone)||'—'}</p>
+    <p><strong>Address:</strong> ${esc(o.address)||'—'} ${o.city?`(${esc(o.city)}${o.zone?', '+esc(o.zone):''})`:''}</p>
     <p><strong>Courier:</strong> ${o.courier||'—'} &nbsp; <strong>Status:</strong> ${o.status||'Processing'}</p>
-    ${o.notes ? `<p><strong>Notes:</strong> ${o.notes}</p>` : ''}
+    ${o.notes ? `<p><strong>Notes:</strong> ${esc(o.notes)}</p>` : ''}
     <table style="width:100%;margin-top:10px;border-collapse:collapse;">
       <tr><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px;">Item</th><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px;">Qty</th><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px;">Subtotal</th></tr>
       ${items}
@@ -1374,6 +1493,8 @@ document.getElementById('saveOrderEditBtn').addEventListener('click', async ()=>
   };
   try{
     await updateDoc(doc(db,'orders',id), data);
+    const local = ordersMap.get(id);
+    if(local){ ordersMap.set(id, {...local, ...data}); refreshOrderViews(); }
     document.getElementById('orderModal').classList.remove('show');
     toast('আপডেট হয়েছে');
   }catch(e){ console.error(e); toast('সমস্যা হয়েছে'); }
@@ -1430,6 +1551,40 @@ document.getElementById('saveNewOrderBtn').addEventListener('click', async ()=>{
   }catch(e){ console.error(e); toast('সমস্যা হয়েছে'); }
 });
 
+// ---------- Dashboard stats from the server (accurate even when only recent orders are loaded) ----------
+// Count/sum aggregations cost ~1 read each instead of downloading every order.
+let statsTimer = null;
+function scheduleStatsRefresh(){
+  clearTimeout(statsTimer);
+  statsTimer = setTimeout(refreshServerStats, 800);
+}
+function paintStats(c, revenue, returning){
+  const set = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent = v; };
+  set('statProcessing', c['Processing']); set('statPaymentPending', c['Payment Pending']);
+  set('statOnHold', c['On Hold']); set('statDelivered', c['Delivered']);
+  set('statCompleted', c['Completed']); set('statCanceled', c['Canceled']);
+  set('statRevenue', tk(revenue)); set('statReturning', returning);
+  const pending = (c['Processing']||0) + (c['Payment Pending']||0);
+  const bell = document.getElementById('bellBadge');
+  const nav = document.getElementById('navOrdersBadge');
+  if(pending>0){ bell.style.display='flex'; bell.textContent=pending; nav.style.display='inline-block'; nav.textContent=pending; }
+  else{ bell.style.display='none'; nav.style.display='none'; }
+}
+async function refreshServerStats(){
+  try{
+    const col = collection(db,'orders');
+    const counts = await Promise.all(ORDER_STATUSES.map(st=>getCountFromServer(query(col, where('status','==',st)))));
+    const c = {};
+    ORDER_STATUSES.forEach((st,i)=>{ c[st] = counts[i].data().count; });
+    const rev = await getAggregateFromServer(query(col, where('status','in',['Delivered','Completed'])), {t: sum('total')});
+    const ret = await getCountFromServer(query(col, where('isReturningCustomer','==',true)));
+    paintStats(c, rev.data().t || 0, ret.data().count);
+  }catch(e){
+    console.warn('Server stats unavailable, using loaded orders instead:', e);
+    updateDashboardStats();
+  }
+}
+
 function updateDashboardStats(){
   const count = s => allOrders.filter(o=>(o.status||'Processing')===s).length;
   document.getElementById('statProcessing').textContent = count('Processing');
@@ -1467,20 +1622,28 @@ function renderCustomerTable(){
   const tb = document.getElementById('custTable');
   if(customers.length===0){ tb.innerHTML = '<tr><td colspan="5" class="empty-row">কোনো কাস্টমার নেই</td></tr>'; return; }
   tb.innerHTML = customers.map(c=>`
-    <tr><td>${c.name||'—'}</td><td>${c.phone}</td><td>${c.count}</td><td>${tk(c.spent)}</td><td>${c.last?c.last.toLocaleDateString():'—'}</td></tr>
+    <tr><td>${esc(c.name)||'—'}</td><td>${esc(c.phone)}</td><td>${c.count}</td><td>${tk(c.spent)}</td><td>${c.last?c.last.toLocaleDateString():'—'}</td></tr>
   `).join('');
 }
 
 let incompleteOrdersCache = [];
-onSnapshot(query(collection(db,'incomplete_orders'), orderBy('updatedAt','desc')), (snap)=>{
+onSnapshot(query(collection(db,'incomplete_orders'), orderBy('updatedAt','desc'), limit(200)), (snap)=>{
   incompleteOrdersCache = [];
+  const convertedIds = [];
   // Skip drafts the customer already converted into a real order on the storefront —
   // they aren't truly "incomplete" anymore, so they shouldn't show or count here.
   snap.forEach(d=>{
     const data = d.data();
-    if(data.converted === true) return;
+    if(data.converted === true){ convertedIds.push(d.id); return; }
     incompleteOrdersCache.push({id:d.id, ...data});
   });
+  // Customers can't delete their own drafts, so the admin cleans converted ones up
+  // here; otherwise the collection keeps growing and slows the panel down over time.
+  if(convertedIds.length){
+    const batch = writeBatch(db);
+    convertedIds.slice(0, 400).forEach(id=>batch.delete(doc(db,'incomplete_orders', id)));
+    batch.commit().catch(e=>console.warn('Draft cleanup skipped:', e));
+  }
   renderIncompleteTable();
   const badge = document.getElementById('navIncompleteBadge');
   if(incompleteOrdersCache.length>0){ badge.style.display='inline-block'; badge.textContent = incompleteOrdersCache.length; }
@@ -1492,10 +1655,10 @@ function renderIncompleteTable(){
   const tb = document.getElementById('incTable');
   if(filtered.length===0){ tb.innerHTML = '<tr><td colspan="7" class="empty-row">কোনো incomplete order নেই</td></tr>'; return; }
   tb.innerHTML = filtered.map(o=>{
-    const items = (o.items||[]).map(i=>`${i.name} x${i.qty}`).join(', ');
+    const items = (o.items||[]).map(i=>`${esc(i.name)} x${Number(i.qty)||1}`).join(', ');
     const d = o.updatedAt && o.updatedAt.toDate ? o.updatedAt.toDate() : new Date();
     return `<tr>
-      <td>${o.customerName||'—'}</td><td>${o.phone||'—'}</td><td>${o.address||'—'}</td><td>${items||'—'}</td><td>${d.toLocaleString()}</td>
+      <td>${esc(o.customerName)||'—'}</td><td>${esc(o.phone)||'—'}</td><td>${esc(o.address)||'—'}</td><td>${items||'—'}</td><td>${d.toLocaleString()}</td>
       <td>
         <select class="status-select inc-status" data-id="${o.id}">
           <option value="Processing">Processing</option>
@@ -1641,61 +1804,72 @@ function renderBannerTable(){
   }));
 }
 
-// ================= REPORTS (generated from in-memory allOrders, already synced live) =================
-document.getElementById('genRepOrders').addEventListener('click', ()=>{
+// ================= REPORTS (fetched from the server by date range, so they cover every order) =================
+async function fetchOrdersInRange(start, end){
+  // Local-day boundaries (Bangladesh time), not UTC, so late-night orders land on the right day.
+  const from = Timestamp.fromDate(new Date(start + 'T00:00:00'));
+  const to = Timestamp.fromDate(new Date(end + 'T23:59:59.999'));
+  const snap = await getDocs(query(collection(db,'orders'),
+    where('createdAt','>=',from), where('createdAt','<=',to), orderBy('createdAt','desc')));
+  const out = [];
+  snap.forEach(d=>out.push({id:d.id, ...d.data()}));
+  return out;
+}
+function repLoading(tbId, cols){
+  document.getElementById(tbId).innerHTML = `<tr><td colspan="${cols}" class="empty-row">লোড হচ্ছে...</td></tr>`;
+}
+
+document.getElementById('genRepOrders').addEventListener('click', async ()=>{
   const start = document.getElementById('repOStart').value;
   const end = document.getElementById('repOEnd').value;
   const status = document.getElementById('repOStatus').value;
   if(!start || !end){ toast('Start ও End date দিন'); return; }
-  const filtered = allOrders.filter(o=>{
-    const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
-    const dStr = d.toISOString().split('T')[0];
-    if(dStr < start || dStr > end) return false;
-    if(status && o.status !== status) return false;
-    return true;
-  });
   const tb = document.getElementById('repOrdersTable');
-  if(filtered.length===0){ tb.innerHTML = '<tr><td colspan="7" class="empty-row">কোনো ডেটা নেই</td></tr>'; return; }
-  tb.innerHTML = filtered.map(o=>{
-    const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
-    const productSummary = (o.items||[]).map(i=>`${i.name} x${i.qty}`).join(', ');
-    return `<tr><td>${d.toLocaleDateString()}</td><td>#${o.id.slice(-6).toUpperCase()}</td><td>${o.customerName||'—'}<br><small>${o.phone||''}</small></td><td>${productSummary}</td><td>${tk(o.total)}</td><td>${o.courier||'—'}</td><td>${o.status||'Processing'}</td></tr>`;
-  }).join('');
+  repLoading('repOrdersTable', 7);
+  try{
+    const filtered = (await fetchOrdersInRange(start, end)).filter(o=>!status || (o.status||'Processing')===status);
+    if(filtered.length===0){ tb.innerHTML = '<tr><td colspan="7" class="empty-row">কোনো ডেটা নেই</td></tr>'; return; }
+    tb.innerHTML = filtered.map(o=>{
+      const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
+      const productSummary = (o.items||[]).map(i=>`${esc(i.name)} x${Number(i.qty)||1}`).join(', ');
+      return `<tr><td>${d.toLocaleDateString()}</td><td>#${o.id.slice(-6).toUpperCase()}</td><td>${esc(o.customerName)||'—'}<br><small>${esc(o.phone)}</small></td><td>${productSummary}</td><td>${tk(o.total)}</td><td>${esc(o.courier)||'—'}</td><td>${esc(o.status||'Processing')}</td></tr>`;
+    }).join('');
+  }catch(e){ console.error(e); tb.innerHTML = '<tr><td colspan="7" class="empty-row">রিপোর্ট লোড করতে সমস্যা</td></tr>'; }
 });
 
-document.getElementById('genRepProducts').addEventListener('click', ()=>{
+document.getElementById('genRepProducts').addEventListener('click', async ()=>{
   const start = document.getElementById('repPStart').value;
   const end = document.getElementById('repPEnd').value;
   if(!start || !end){ toast('Start ও End date দিন'); return; }
-  const rows = [];
-  allOrders.forEach(o=>{
-    const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
-    const dStr = d.toISOString().split('T')[0];
-    if(dStr < start || dStr > end) return;
-    (o.items||[]).forEach(i=>rows.push({date: d.toLocaleDateString(), name: i.name, qty: i.qty}));
-  });
   const tb = document.getElementById('repProductsTable');
-  if(rows.length===0){ tb.innerHTML = '<tr><td colspan="4" class="empty-row">কোনো ডেটা নেই</td></tr>'; return; }
-  tb.innerHTML = rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r.date}</td><td>${r.name}</td><td>${r.qty}</td></tr>`).join('');
+  repLoading('repProductsTable', 4);
+  try{
+    const rows = [];
+    (await fetchOrdersInRange(start, end)).forEach(o=>{
+      const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
+      (o.items||[]).forEach(i=>rows.push({date: d.toLocaleDateString(), name: i.name, qty: i.qty}));
+    });
+    if(rows.length===0){ tb.innerHTML = '<tr><td colspan="4" class="empty-row">কোনো ডেটা নেই</td></tr>'; return; }
+    tb.innerHTML = rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r.date}</td><td>${esc(r.name)}</td><td>${Number(r.qty)||1}</td></tr>`).join('');
+  }catch(e){ console.error(e); tb.innerHTML = '<tr><td colspan="4" class="empty-row">রিপোর্ট লোড করতে সমস্যা</td></tr>'; }
 });
 
-document.getElementById('genRepCourier').addEventListener('click', ()=>{
+document.getElementById('genRepCourier').addEventListener('click', async ()=>{
   const start = document.getElementById('repCStart').value;
   const end = document.getElementById('repCEnd').value;
   const courierF = document.getElementById('repCCourier').value;
   if(!start || !end){ toast('Start ও End date দিন'); return; }
-  const filtered = allOrders.filter(o=>{
-    const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
-    const dStr = d.toISOString().split('T')[0];
-    return dStr >= start && dStr <= end;
-  });
-  const list = couriers.filter(c=>!courierF || c.name===courierF);
   const tb = document.getElementById('repCourierTable');
+  const list = couriers.filter(c=>!courierF || c.name===courierF);
   if(list.length===0){ tb.innerHTML = '<tr><td colspan="6" class="empty-row">কোনো courier নেই</td></tr>'; return; }
-  tb.innerHTML = list.map(c=>{
-    const os = filtered.filter(o=>o.courier===c.name);
-    return `<tr><td>${c.name}</td><td>${os.length}</td><td>${os.filter(o=>o.status==='Processing').length}</td><td>${os.filter(o=>o.status==='Delivered').length}</td><td>${os.filter(o=>o.status==='Completed').length}</td><td>${os.filter(o=>o.status==='Canceled').length}</td></tr>`;
-  }).join('');
+  repLoading('repCourierTable', 6);
+  try{
+    const filtered = await fetchOrdersInRange(start, end);
+    tb.innerHTML = list.map(c=>{
+      const os = filtered.filter(o=>o.courier===c.name);
+      return `<tr><td>${esc(c.name)}</td><td>${os.length}</td><td>${os.filter(o=>o.status==='Processing').length}</td><td>${os.filter(o=>o.status==='Delivered').length}</td><td>${os.filter(o=>o.status==='Completed').length}</td><td>${os.filter(o=>o.status==='Canceled').length}</td></tr>`;
+    }).join('');
+  }catch(e){ console.error(e); tb.innerHTML = '<tr><td colspan="6" class="empty-row">রিপোর্ট লোড করতে সমস্যা</td></tr>'; }
 });
 
 // ================= USERS =================
