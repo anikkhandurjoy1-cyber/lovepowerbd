@@ -6,8 +6,8 @@
 <title>LovePower Admin Panel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Baloo+Da+2:wght@700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Baloo+Da+2:wght@700;800&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --primary:#7C3AED; --primary2:#F59E0B; --accent:#8B5CF6;
@@ -191,6 +191,119 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
   .o-acts{justify-content:flex-start;}
   .o-acts button{width:auto;flex:1;height:34px;}
 }
+
+/* ================= BonghoBazar-style theme (LovePower colours) =================
+   Change --primary / --accent here to recolour the whole panel. */
+#adminApp{--primary:#6D28D9;--accent:#F59E0B;--surface:#F6F3FB;--border:#E7E1F1;--card:#FFFFFF;--text:#1A1523;--muted:#6B6478;--pt:rgba(109,40,217,.08);}
+#adminApp,#adminApp *{font-family:'Hind Siliguri','Inter',sans-serif;}
+body{background:#fff;}
+#adminApp .main{background:#fff;min-height:100vh;}
+.sidebar{background:var(--surface) !important;}
+.sb-logo{display:flex;align-items:center;gap:10px;padding:16px;}
+.sb-mark{width:38px;height:38px;object-fit:contain;flex-shrink:0;}
+.sb-logo.custom .sb-mark{width:auto;height:38px;max-width:170px;}
+.sb-logo.custom .sb-name{display:none;}
+.sb-name{display:flex;flex-direction:column;line-height:1;}
+.sb-brand{font-family:'Baloo Da 2',sans-serif !important;font-weight:800;font-size:22px;color:var(--primary);letter-spacing:-.3px;}
+.sb-brand span{color:var(--accent);font-family:inherit !important;}
+.sb-sub{font-size:9px;color:#DC2626;letter-spacing:4px;font-weight:700;margin-top:3px;}
+.ni.active{background:var(--pt) !important;}
+.topbar{background:var(--surface) !important;}
+.tb-title{font-family:'Baloo Da 2',sans-serif !important;font-size:18px;}
+.tb-date{font-size:12px;color:var(--muted);}
+.tb-admin{background:var(--pt);border:1px solid rgba(109,40,217,.3);color:var(--primary);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;}
+.main{padding:22px !important;}
+
+/* stat cards */
+.stat-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr)) !important;gap:12px;margin-bottom:12px !important;}
+.stat-card{padding:16px !important;transition:border-color .15s,transform .15s;}
+.stat-card[data-go],.stat-card[data-nav]{cursor:pointer;}
+.stat-card[data-go]:hover,.stat-card[data-nav]:hover{border-color:var(--primary);transform:translateY(-1px);}
+.sc-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px;}
+.sc-icon.pk{background:rgba(109,40,217,.12);} .sc-icon.cy{background:rgba(245,158,11,.16);}
+.sc-icon.gn{background:rgba(34,197,94,.13);}  .sc-icon.yw{background:rgba(245,158,11,.13);}
+.sc-icon.bl{background:rgba(59,130,246,.13);} .sc-icon.pu{background:rgba(139,92,246,.13);}
+.sc-icon.rd{background:rgba(239,68,68,.12);}
+.stat-card .n{font-family:'Baloo Da 2',sans-serif !important;font-size:26px !important;color:var(--text) !important;line-height:1.1;}
+.stat-card .l{font-size:12px;}
+.dash-hint{font-size:12px;color:var(--muted);margin:4px 0 16px;}
+
+/* table cards */
+.tc{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;}
+.th{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.tt{font-weight:700;font-size:14.5px;}
+.th-note{font-size:12px;color:var(--muted);}
+.dash-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+.today-body{padding:14px;}
+.tr2{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:var(--surface);border-radius:8px;margin-bottom:6px;}
+.tr2:last-child{margin-bottom:0;}
+.tr2-l{font-size:13px;color:var(--muted);}
+.tr2-v{font-size:15px;font-weight:700;}
+.tr2.hl{background:var(--pt);} .tr2.hl .tr2-l{color:var(--primary);font-weight:600;} .tr2.hl .tr2-v{color:var(--primary);font-size:17px;}
+.tr2.money .tr2-v{color:#15803D;}
+.tr2.click{cursor:pointer;} .tr2.click:hover{outline:1px solid var(--border);}
+.tbl-scroll{overflow-x:auto;}
+table.rt{min-width:0;}
+.rt td{white-space:normal;}
+.rt .inv{color:var(--primary);font-weight:700;font-size:12px;}
+.rt .amt{color:#15803D;font-weight:700;}
+th{background:rgba(0,0,0,.025) !important;font-size:11px !important;letter-spacing:.5px;padding:10px 14px !important;}
+td{padding:11px 14px !important;font-size:13px;}
+.tbl-wrap{border-radius:12px;}
+.card{border-radius:12px;}
+.card h3{font-family:'Baloo Da 2',sans-serif !important;font-size:16px;}
+
+/* badges */
+.bdg{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;}
+.bdg.Processing{background:rgba(59,130,246,.15);color:#2563EB;}
+.bdg.PaymentPending{background:rgba(245,158,11,.16);color:#B45309;}
+.bdg.OnHold{background:rgba(139,92,246,.15);color:#7C3AED;}
+.bdg.Invoiced{background:rgba(109,40,217,.1);color:var(--primary);}
+.bdg.Delivered,.bdg.Completed{background:rgba(34,197,94,.15);color:#15803D;}
+.bdg.Canceled{background:rgba(239,68,68,.14);color:#DC2626;}
+
+/* page header, tabs, filter bar, buttons */
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.pt{font-family:'Baloo Da 2',sans-serif !important;font-size:22px;font-weight:800;}
+.ph-acts{display:flex;gap:8px;flex-wrap:wrap;}
+.status-tabs{flex-wrap:wrap;margin-bottom:14px !important;}
+.stab{font-weight:600;color:var(--muted);background:transparent !important;padding:6px 14px !important;}
+.stab:hover,.stab.active{border-color:var(--primary) !important;color:var(--primary) !important;background:var(--pt) !important;}
+.fb{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px !important;}
+.fb input,.fb select{background:var(--surface) !important;padding:8px 11px !important;border-radius:7px !important;font-size:13px !important;}
+.fb #oSearch{min-width:200px;}
+.btn{display:inline-flex;align-items:center;gap:5px;}
+.btn-primary:hover{opacity:.9;}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);}
+.btn-c{background:var(--pt);border:1px solid rgba(109,40,217,.3);color:var(--primary);}
+.sel-all{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.sel-all .o-count{margin:0;font-size:14px;color:var(--text);}
+.o-count small{font-weight:400;color:var(--muted);font-size:11.5px;}
+
+/* order rows inside the table card */
+.tc .olist{border:none;border-radius:0;}
+.o-inv{color:var(--primary) !important;}
+.o-acts .a-view{background:#fff !important;border:1px solid var(--border) !important;}
+.o-acts .a-edit{background:var(--primary) !important;}
+.o-acts .a-print{background:var(--accent) !important;}
+.o-acts .a-del{background:#DC2626 !important;}
+.st-Processing{background:rgba(59,130,246,.15) !important;color:#2563EB !important;border-color:transparent !important;}
+.st-PaymentPending{background:rgba(245,158,11,.16) !important;color:#B45309 !important;border-color:transparent !important;}
+.st-OnHold{background:rgba(139,92,246,.15) !important;color:#7C3AED !important;border-color:transparent !important;}
+.st-Invoiced{background:rgba(109,40,217,.1) !important;color:var(--primary) !important;border-color:transparent !important;}
+.st-Delivered,.st-Completed{background:rgba(34,197,94,.15) !important;color:#15803D !important;border-color:transparent !important;}
+.st-Canceled{background:rgba(239,68,68,.14) !important;color:#DC2626 !important;border-color:transparent !important;}
+.o-more{border-top:1px solid var(--border);}
+.o-more:has(button[style*="none"]){display:none;}
+
+.bell-badge{width:auto !important;min-width:18px;height:18px !important;padding:0 5px;border-radius:9px !important;top:-7px !important;right:-12px !important;font-weight:700;}
+@media(max-width:900px){ .dash-2{grid-template-columns:1fr;} }
+@media(max-width:768px){
+  .main{padding:14px !important;}
+  .stat-grid{grid-template-columns:repeat(2,1fr) !important;}
+  .tb-date,.tb-admin{display:none;}
+  .fb #oSearch{min-width:0;flex:1 1 100%;}
+}
 </style>
 </head>
 <body>
@@ -238,7 +351,10 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
 <div id="adminApp">
 
 <div class="sidebar" id="sidebar">
-  <div class="sb-logo" style="display:flex;align-items:center;gap:8px;"><img id="sidebarLogo" src="" alt="LovePower" style="height:28px;"> LovePower</div>
+  <div class="sb-logo">
+    <img id="sidebarLogo" src="" alt="LovePower" class="sb-mark">
+    <div class="sb-name" id="sidebarName"><span class="sb-brand">Love<span>Power</span></span><span class="sb-sub">BD.COM</span></div>
+  </div>
   <div class="nav-sec">
     <div class="nav-lbl">Main</div>
     <div class="ni active" data-page="dashboard"><span class="ic">📊</span>Dashboard</div>
@@ -246,7 +362,10 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
   </div>
   <div class="nav-sec">
     <div class="nav-lbl">Orders</div>
-    <div class="ni" data-page="orders"><span class="ic">🧾</span>All Orders<span class="nb" id="navOrdersBadge" style="display:none;">0</span></div>
+    <div class="ni" data-page="orders"><span class="ic">🛒</span>All Orders<span class="nb" id="navOrdersBadge" style="display:none;">0</span></div>
+    <div class="ni" data-page="orders" data-filter="Processing"><span class="ic">⚙️</span>Processing</div>
+    <div class="ni" data-page="orders" data-filter="Invoiced"><span class="ic">🧾</span>Invoiced</div>
+    <div class="ni" data-page="orders" data-filter="Delivered"><span class="ic">🚚</span>Delivered</div>
   </div>
   <div class="nav-sec">
     <div class="nav-lbl">Products</div>
@@ -281,6 +400,8 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
     <div class="tb-title" id="pageTitle">Dashboard</div>
   </div>
   <div class="tb-right">
+    <span class="tb-date" id="tbDate"></span>
+    <span class="tb-admin">👑 Admin</span>
     <a href="index.html" target="_blank" class="btn btn-outline btn-sm">🌐 Site দেখুন</a>
     <div class="bell-wrap" id="bellBtn">🔔<span class="bell-badge" id="bellBadge" style="display:none;">0</span></div>
     <button class="logout-link" id="logoutBtn">লগআউট</button>
@@ -291,18 +412,28 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
 
   <div class="page active" id="pg-dashboard">
     <div class="stat-grid">
-      <div class="stat-card"><div class="n" id="statProcessing">0</div><div class="l">Processing</div></div>
-      <div class="stat-card"><div class="n" id="statPaymentPending">0</div><div class="l">Payment Pending</div></div>
-      <div class="stat-card"><div class="n" id="statOnHold">0</div><div class="l">On Hold</div></div>
-      <div class="stat-card"><div class="n" id="statDelivered">0</div><div class="l">Delivered</div></div>
-      <div class="stat-card"><div class="n" id="statCompleted">0</div><div class="l">Completed</div></div>
-      <div class="stat-card"><div class="n" id="statCanceled">0</div><div class="l">Canceled</div></div>
-      <div class="stat-card"><div class="n" id="statRevenue">৳0</div><div class="l">Total Revenue</div></div>
-      <div class="stat-card"><div class="n" id="statReturning">0</div><div class="l">Returning Customers</div></div>
+      <div class="stat-card" data-go="all"><div class="sc-icon pk">🛒</div><div class="n" id="statTotal">0</div><div class="l">Total Orders</div></div>
+      <div class="stat-card" data-go="Processing"><div class="sc-icon bl">⚙️</div><div class="n" id="statProcessing">0</div><div class="l">Processing</div></div>
+      <div class="stat-card" data-go="Payment Pending"><div class="sc-icon yw">💳</div><div class="n" id="statPaymentPending">0</div><div class="l">Payment Pending</div></div>
+      <div class="stat-card" data-go="On Hold"><div class="sc-icon pu">⏸️</div><div class="n" id="statOnHold">0</div><div class="l">On Hold</div></div>
+      <div class="stat-card" data-go="Canceled"><div class="sc-icon rd">❌</div><div class="n" id="statCanceled">0</div><div class="l">Canceled</div></div>
+      <div class="stat-card" data-go="Completed"><div class="sc-icon gn">✅</div><div class="n" id="statCompleted">0</div><div class="l">Completed</div></div>
+      <div class="stat-card" data-go="Delivered"><div class="sc-icon gn">🚚</div><div class="n" id="statDelivered">0</div><div class="l">Delivered</div></div>
+      <div class="stat-card"><div class="sc-icon cy">💰</div><div class="n" id="statRevenue">৳0</div><div class="l">Revenue</div></div>
+      <div class="stat-card"><div class="sc-icon pk">🔁</div><div class="n" id="statReturning">0</div><div class="l">Returning Customers</div></div>
+      <div class="stat-card" data-nav="products"><div class="sc-icon pk">📦</div><div class="n" id="statProducts">0</div><div class="l">Products</div></div>
     </div>
-    <div class="card">
-      <h3>স্বাগতম!</h3>
-      <p style="font-size:13px;color:var(--muted);">নতুন অর্ডার আসলে ঘণ্টা 🔔 বাজবে। "All Orders" থেকে অর্ডার status/courier আপডেট করুন। "Incomplete Orders" এ যারা checkout শুরু করে শেষ করেনি তাদের দেখা যাবে।</p>
+    <p class="dash-hint">💡 উপরের সংখ্যাগুলো সব অর্ডারের total। "আজকের রিপোর্ট" আজ রাত ১২টা থেকে এখন পর্যন্ত সব অর্ডার — নতুন অর্ডার আসলে সাথে সাথে আপডেট হয়।</p>
+    <div class="dash-2">
+      <div class="tc">
+        <div class="th"><div class="tt">আজকের রিপোর্ট</div><span class="th-note" id="todayDateLbl"></span></div>
+        <div class="today-body" id="todayReport"><div class="tr2"><span class="tr2-l">লোড হচ্ছে...</span></div></div>
+      </div>
+      <div class="tc">
+        <div class="th"><div class="tt">Recent Orders</div><button class="btn btn-outline btn-sm" id="recentAllBtn">সব দেখুন →</button></div>
+        <div class="tbl-scroll"><table class="rt"><thead><tr><th>Invoice</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
+        <tbody id="recentOrdersTb"><tr><td colspan="4" class="empty-row">লোড হচ্ছে...</td></tr></tbody></table></div>
+      </div>
     </div>
   </div>
 
@@ -319,6 +450,13 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
   </div>
 
   <div class="page" id="pg-orders">
+    <div class="ph">
+      <div class="pt">Orders</div>
+      <div class="ph-acts">
+        <button class="btn btn-primary btn-sm" id="newOrderBtn">➕ Create Order</button>
+        <button class="btn btn-c btn-sm" id="exportCsvBtn">📥 CSV</button>
+      </div>
+    </div>
     <div class="status-tabs" id="statusTabs">
       <div class="stab active" data-status="all">All</div>
       <div class="stab" data-status="Processing">Processing</div>
@@ -329,22 +467,23 @@ td{padding:9px 8px;border-top:1px solid var(--border);white-space:nowrap;}
       <div class="stab" data-status="Completed">Completed</div>
       <div class="stab" data-status="Canceled">Canceled</div>
     </div>
-    <div class="toolbar">
-      <input type="text" id="oSearch" placeholder="Name/Invoice/Phone">
+    <div class="toolbar fb">
+      <input type="text" id="oSearch" placeholder="🔍 নাম / Invoice / ফোন">
       <select id="oCourierFilter"><option value="">All Couriers</option></select>
       <input type="date" id="oDateFilter">
       <button class="btn btn-outline btn-sm" id="oClearFilter">Clear</button>
-      <button class="btn btn-outline btn-sm" id="exportCsvBtn">⬇ CSV</button>
-      <button class="btn btn-outline btn-sm" id="bulkStatusBtn">Bulk Status</button>
-      <button class="btn btn-outline btn-sm" id="printSelectedBtn">🖨️ Print Selected</button>
-      <button class="btn btn-primary btn-sm" id="newOrderBtn">+ New Order</button>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:12px;color:var(--muted);">
-      <input type="checkbox" id="selectAllOrders"> সব সিলেক্ট করুন
+    <div class="tc">
+      <div class="th">
+        <label class="tt sel-all"><input type="checkbox" id="selectAllOrders"> <span class="o-count" id="orderCount"></span></label>
+        <div class="ph-acts">
+          <button class="btn btn-outline btn-sm" id="printSelectedBtn">🖨️ Print Invoice</button>
+          <button class="btn btn-outline btn-sm" id="bulkStatusBtn">↕️ Bulk Status</button>
+        </div>
+      </div>
+      <div id="orderCards"></div>
+      <div class="o-more"><button class="btn btn-outline" id="loadMoreOrdersBtn" style="display:none;">আরও দেখুন</button></div>
     </div>
-    <div class="o-count" id="orderCount"></div>
-    <div id="orderCards"></div>
-    <div class="o-more"><button class="btn btn-outline" id="loadMoreOrdersBtn" style="display:none;">আরও দেখুন</button></div>
   </div>
 
   <div class="page" id="pg-products">
@@ -814,9 +953,24 @@ document.getElementById('loginBtn').addEventListener('click', doLogin);
   document.getElementById(id).addEventListener('keydown', (e)=>{ if(e.key === 'Enter') doLogin(); });
 });
 document.getElementById('logoutBtn').addEventListener('click', ()=>signOut(auth));
+// Orders, drafts and users are auth-only in the Firestore rules. Listeners opened before
+// login get "permission denied" and die, so after a fresh login nothing showed until a
+// page refresh. These now start right after login and stop on logout.
+let authedUser = null;
+const authListeners = [];
+function authListen(start){
+  const L = {start, unsub:null};
+  authListeners.push(L);
+  if(authedUser) L.unsub = start();
+  return L;
+}
 onAuthStateChanged(auth, (user)=>{
   document.getElementById('loginScreen').style.display = user ? 'none' : 'flex';
   document.getElementById('adminApp').style.display = user ? 'block' : 'none';
+  const was = !!authedUser;
+  authedUser = user;
+  if(user && !was) authListeners.forEach(L=>{ if(!L.unsub) L.unsub = L.start(); });
+  if(!user && was) authListeners.forEach(L=>{ if(L.unsub){ L.unsub(); L.unsub = null; } });
 });
 
 const pageTitles = {dashboard:'Dashboard', incomplete:'Incomplete Orders', orders:'All Orders', products:'Products', categories:'Categories', couriers:'Couriers', customers:'Customers', banners:'Banners', 'rep-orders':'Order Report', 'rep-products':'Product Report', 'rep-courier':'Courier Report', users:'Users', settings:'Settings'};
@@ -830,6 +984,30 @@ document.querySelectorAll('.ni').forEach(item=>{
     document.getElementById('sidebar').classList.remove('open');
   });
 });
+// Sidebar/Dashboard shortcuts open the Orders page on a given status tab.
+function openOrdersWith(status){
+  const nav = document.querySelector(status && status!=='all'
+    ? `.ni[data-page="orders"][data-filter="${status}"]` : '.ni[data-page="orders"]:not([data-filter])');
+  (nav || document.querySelector('.ni[data-page="orders"]')).click();
+  const tab = document.querySelector(`.stab[data-status="${status||'all'}"]`);
+  if(tab) tab.click();
+}
+document.querySelectorAll('.ni[data-page="orders"]').forEach(item=>{
+  item.addEventListener('click', ()=>{
+    const tab = document.querySelector(`.stab[data-status="${item.dataset.filter||'all'}"]`);
+    if(tab && !tab.classList.contains('active')) tab.click();
+    if(item.dataset.filter) document.getElementById('pageTitle').textContent = item.dataset.filter + ' Orders';
+  });
+});
+document.querySelectorAll('.stat-card[data-go]').forEach(c=>c.addEventListener('click', ()=>openOrdersWith(c.dataset.go)));
+document.querySelectorAll('.stat-card[data-nav]').forEach(c=>c.addEventListener('click', ()=>document.querySelector(`.ni[data-page="${c.dataset.nav}"]`).click()));
+document.getElementById('recentAllBtn').addEventListener('click', ()=>openOrdersWith('all'));
+function paintTopDate(){
+  const el = document.getElementById('tbDate');
+  if(el) el.textContent = new Date().toLocaleDateString('bn-BD',{weekday:'short',year:'numeric',month:'short',day:'numeric'});
+}
+paintTopDate(); setInterval(paintTopDate, 60000);
+
 document.getElementById('menuToggle').addEventListener('click', ()=>{
   document.getElementById('sidebar').classList.toggle('open');
 });
@@ -995,6 +1173,7 @@ onSnapshot(query(collection(db,'products'), orderBy('createdAt','desc')), (snap)
   allProducts = [];
   snap.forEach(d=>allProducts.push({id:d.id, ...d.data()}));
   renderProductTable();
+  const sp = document.getElementById('statProducts'); if(sp) sp.textContent = allProducts.length;
 });
 
 document.getElementById('saveProductBtn').addEventListener('click', async ()=>{
@@ -1121,9 +1300,56 @@ function refreshOrderViews(){
   renderOrderTable();
   scheduleStatsRefresh();
   renderCustomerTable();
+  renderRecentOrders();
 }
 
-onSnapshot(query(collection(db,'orders'), orderBy('createdAt','desc'), limit(ORDER_PAGE)), (snap)=>{
+// ---------- আজকের রিপোর্ট: every order since today's midnight, live ----------
+// Single-field range on createdAt (no extra index needed). Re-subscribes after midnight.
+let todayOrdersList = [], todayListenDay = '';
+function todayKey(){ return new Date().toLocaleDateString('en-CA'); }
+function startTodayWatch(){
+  const start = new Date(); start.setHours(0,0,0,0);
+  todayListenDay = todayKey();
+  return onSnapshot(query(collection(db,'orders'), where('createdAt','>=',Timestamp.fromDate(start)), orderBy('createdAt','desc')),
+    (snap)=>{ todayOrdersList = snap.docs.map(d=>({id:d.id, ...d.data()})); renderTodayReport(); },
+    (err)=>{ console.warn('Today report listener failed:', err); });
+}
+const todayWatch = authListen(startTodayWatch);
+setInterval(()=>{
+  if(todayWatch.unsub && todayListenDay !== todayKey()){
+    todayWatch.unsub(); todayOrdersList = []; todayWatch.unsub = startTodayWatch();
+  }
+}, 60000);
+function renderTodayReport(){
+  const box = document.getElementById('todayReport'); if(!box) return;
+  const list = todayOrdersList;
+  const cnt = st => list.filter(o=>(o.status||'Processing')===st).length;
+  const sale = list.filter(o=>o.status!=='Canceled').reduce((a,o)=>a+(Number(o.total)||0),0);
+  const lbl = document.getElementById('todayDateLbl');
+  if(lbl) lbl.textContent = new Date().toLocaleDateString('bn-BD',{day:'numeric',month:'long'});
+  box.innerHTML =
+    `<div class="tr2 hl click" data-go="today"><span class="tr2-l">Today Orders</span><span class="tr2-v">${list.length}</span></div>`+
+    `<div class="tr2 money"><span class="tr2-l">আজকের বিক্রি (Canceled বাদে)</span><span class="tr2-v">${tk(sale)}</span></div>`+
+    ORDER_STATUSES.map(st=>`<div class="tr2 click" data-go="${st}"><span class="tr2-l">${st}</span><span class="tr2-v">${cnt(st)}</span></div>`).join('');
+  box.querySelectorAll('.tr2.click').forEach(r=>r.addEventListener('click', ()=>{
+    if(r.dataset.go==='today'){
+      openOrdersWith('all');
+      document.getElementById('oDateFilter').value = todayKey();
+      renderOrderTable(); loadOrdersForDay(todayKey());
+    } else openOrdersWith(r.dataset.go);
+  }));
+}
+function renderRecentOrders(){
+  const tb = document.getElementById('recentOrdersTb'); if(!tb) return;
+  const recent = allOrders.slice(0,6);
+  tb.innerHTML = recent.length ? recent.map(o=>{
+    const st = o.status || 'Processing';
+    return `<tr><td class="inv">${esc(invoiceNo(o))}</td><td>${esc(o.customerName)||'—'}</td>
+      <td class="amt">${tk(o.total)}</td><td><span class="bdg ${st.replace(/\s+/g,'')}">${esc(st)}</span></td></tr>`;
+  }).join('') : '<tr><td colspan="4" class="empty-row">📭 কোনো অর্ডার নেই</td></tr>';
+}
+
+authListen(()=>onSnapshot(query(collection(db,'orders'), orderBy('createdAt','desc'), limit(ORDER_PAGE)), (snap)=>{
   let newCame = false;
   snap.docChanges().forEach(ch=>{
     // 'removed' also fires when an order just slides out of the live window,
@@ -1141,7 +1367,7 @@ onSnapshot(query(collection(db,'orders'), orderBy('createdAt','desc'), limit(ORD
   if(newCame){ playBeep(); toast('🔔 নতুন অর্ডার এসেছে!'); }
   firstOrderLoad = false;
   refreshOrderViews();
-}, (err)=>{ console.error(err); toast('অর্ডার লোড করতে সমস্যা হয়েছে'); });
+}, (err)=>{ console.error(err); toast('অর্ডার লোড করতে সমস্যা হয়েছে'); }));
 
 async function loadMoreOrders(){
   if(loadingMoreOrders || noMoreOrders || !oldestOrderSnap) return;
@@ -1165,11 +1391,39 @@ document.querySelectorAll('.stab').forEach(tab=>{
     tab.classList.add('active');
     curStatusFilter = tab.dataset.status;
     renderOrderTable();
+    loadAllOfStatus(curStatusFilter);
   });
 });
+// Working-queue statuses stay small, so their tab loads every such order from the server
+// (not just the loaded pages) — the Processing tab always matches the dashboard number.
+// Single-field equality query: no extra index needed. Refreshed at most once a minute.
+const QUEUE_STATUSES = ['Processing','Payment Pending','On Hold','Invoiced'];
+const statusLoadedAt = {};
+async function loadAllOfStatus(st){
+  if(!QUEUE_STATUSES.includes(st)) return;
+  if(statusLoadedAt[st] && Date.now()-statusLoadedAt[st] < 60000) return;
+  statusLoadedAt[st] = Date.now();
+  try{
+    const snap = await getDocs(query(collection(db,'orders'), where('status','==',st), limit(1000)));
+    snap.forEach(d=>{ ordersMap.set(d.id, {id:d.id, ...d.data()}); knownOrderIds.add(d.id); });
+    refreshOrderViews();
+  }catch(e){ statusLoadedAt[st] = 0; console.warn('Status load failed:', e); }
+}
 document.getElementById('oSearch').addEventListener('input', renderOrderTable);
 document.getElementById('oCourierFilter').addEventListener('change', renderOrderTable);
-document.getElementById('oDateFilter').addEventListener('change', renderOrderTable);
+document.getElementById('oDateFilter').addEventListener('change', ()=>{ renderOrderTable(); loadOrdersForDay(document.getElementById('oDateFilter').value); });
+// A picked day may include orders older than the loaded pages — fetch that whole day from
+// the server once and merge it in, so the list for that date is always complete.
+const loadedDays = new Set();
+async function loadOrdersForDay(day){
+  if(!day || loadedDays.has(day)) return;
+  try{
+    const rows = await fetchOrdersInRange(day, day);
+    rows.forEach(o=>{ ordersMap.set(o.id, o); knownOrderIds.add(o.id); });
+    if(day !== todayKey()) loadedDays.add(day);
+    refreshOrderViews();
+  }catch(e){ console.warn('Day load failed:', e); }
+}
 document.getElementById('oClearFilter').addEventListener('click', ()=>{
   document.getElementById('oSearch').value=''; document.getElementById('oCourierFilter').value='';
   document.getElementById('oDateFilter').value=''; renderOrderTable();
@@ -1190,7 +1444,8 @@ function getFilteredOrders(){
     if(courierF && o.courier!==courierF) return false;
     if(dateF){
       const d = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : new Date();
-      const dStr = d.toISOString().split('T')[0];
+      // local (Bangladesh) calendar day — toISOString() is UTC and dropped 12am–6am orders
+      const dStr = d.toLocaleDateString('en-CA');
       if(dStr !== dateF) return false;
     }
     return true;
@@ -1223,7 +1478,7 @@ function renderOrderTable(){
   const moreBtn = document.getElementById('loadMoreOrdersBtn');
   if(moreBtn){ moreBtn.style.display = noMoreOrders ? 'none' : 'inline-block'; moreBtn.textContent = 'আরও দেখুন'; }
   const countEl = document.getElementById('orderCount');
-  if(countEl) countEl.textContent = `${list.length} টি অর্ডার দেখানো হচ্ছে (লোড হয়েছে ${allOrders.length} টি${noMoreOrders?'':' — পুরনোগুলো দেখতে নিচে "আরও দেখুন"'})`;
+  if(countEl) countEl.innerHTML = `${list.length} Orders <small>(লোড হয়েছে ${allOrders.length} টি${noMoreOrders?'':' — পুরনো দেখতে নিচে "আরও দেখুন"'})</small>`;
 
   if(list.length===0){
     wrap.className = '';
@@ -1572,8 +1827,9 @@ function scheduleStatsRefresh(){
   clearTimeout(statsTimer);
   statsTimer = setTimeout(refreshServerStats, 800);
 }
-function paintStats(c, revenue, returning){
+function paintStats(c, revenue, returning, total){
   const set = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent = v; };
+  if(total != null) set('statTotal', total);
   set('statProcessing', c['Processing']); set('statPaymentPending', c['Payment Pending']);
   set('statOnHold', c['On Hold']); set('statDelivered', c['Delivered']);
   set('statCompleted', c['Completed']); set('statCanceled', c['Canceled']);
@@ -1592,7 +1848,8 @@ async function refreshServerStats(){
     ORDER_STATUSES.forEach((st,i)=>{ c[st] = counts[i].data().count; });
     const rev = await getAggregateFromServer(query(col, where('status','in',['Delivered','Completed'])), {t: sum('total')});
     const ret = await getCountFromServer(query(col, where('isReturningCustomer','==',true)));
-    paintStats(c, rev.data().t || 0, ret.data().count);
+    const tot = await getCountFromServer(col);
+    paintStats(c, rev.data().t || 0, ret.data().count, tot.data().count);
   }catch(e){
     console.warn('Server stats unavailable, using loaded orders instead:', e);
     updateDashboardStats();
@@ -1611,6 +1868,7 @@ function updateDashboardStats(){
   document.getElementById('statRevenue').textContent = tk(revenue);
   const returningCount = allOrders.filter(o=>o.isReturningCustomer).length;
   document.getElementById('statReturning').textContent = returningCount;
+  document.getElementById('statTotal').textContent = allOrders.length + (noMoreOrders ? '' : '+');
 
   const pendingIshCount = allOrders.filter(o=>['Processing','Payment Pending'].includes(o.status||'Processing')).length;
   const bellBadge = document.getElementById('bellBadge');
@@ -1641,7 +1899,7 @@ function renderCustomerTable(){
 }
 
 let incompleteOrdersCache = [];
-onSnapshot(query(collection(db,'incomplete_orders'), orderBy('updatedAt','desc'), limit(200)), (snap)=>{
+authListen(()=>onSnapshot(query(collection(db,'incomplete_orders'), orderBy('updatedAt','desc'), limit(200)), (snap)=>{
   incompleteOrdersCache = [];
   const convertedIds = [];
   // Skip drafts the customer already converted into a real order on the storefront —
@@ -1662,7 +1920,7 @@ onSnapshot(query(collection(db,'incomplete_orders'), orderBy('updatedAt','desc')
   const badge = document.getElementById('navIncompleteBadge');
   if(incompleteOrdersCache.length>0){ badge.style.display='inline-block'; badge.textContent = incompleteOrdersCache.length; }
   else{ badge.style.display='none'; }
-});
+}));
 function renderIncompleteTable(){
   const search = (document.getElementById('incSearch') ? document.getElementById('incSearch').value : '').toLowerCase();
   const filtered = incompleteOrdersCache.filter(o=>!search || (o.phone||'').includes(search) || (o.customerName||'').toLowerCase().includes(search));
@@ -1888,11 +2146,11 @@ document.getElementById('genRepCourier').addEventListener('click', async ()=>{
 
 // ================= USERS =================
 let allUsers = [];
-onSnapshot(query(collection(db,'panel_users'), orderBy('name')), (snap)=>{
+authListen(()=>onSnapshot(query(collection(db,'panel_users'), orderBy('name')), (snap)=>{
   allUsers = [];
   snap.forEach(d=>allUsers.push({id:d.id, ...d.data()}));
   renderUserTable();
-});
+}));
 document.getElementById('saveUserBtn').addEventListener('click', async ()=>{
   const name = document.getElementById('uName').value.trim();
   if(!name){ toast('নাম দিন'); return; }
@@ -1943,6 +2201,7 @@ onSnapshot(doc(db,'settings','general'), (snap)=>{
   const logoSrc = siteSettings.logoUrl || DEFAULT_LOGO;
   document.getElementById('logoPreview').src = logoSrc;
   document.getElementById('sidebarLogo').src = logoSrc;
+  document.querySelector('.sb-logo').classList.toggle('custom', !!siteSettings.logoUrl);
 });
 document.getElementById('logoUploadZone').addEventListener('click', ()=>document.getElementById('logoFileInput').click());
 document.getElementById('logoFileInput').addEventListener('change', async (e)=>{
