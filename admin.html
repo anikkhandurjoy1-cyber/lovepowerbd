@@ -1478,7 +1478,12 @@ function renderOrderTable(){
   const moreBtn = document.getElementById('loadMoreOrdersBtn');
   if(moreBtn){ moreBtn.style.display = noMoreOrders ? 'none' : 'inline-block'; moreBtn.textContent = 'আরও দেখুন'; }
   const countEl = document.getElementById('orderCount');
-  if(countEl) countEl.innerHTML = `${list.length} Orders <small>(লোড হয়েছে ${allOrders.length} টি${noMoreOrders?'':' — পুরনো দেখতে নিচে "আরও দেখুন"'})</small>`;
+  // Unfiltered "All" view shows the true total order count from the server (not just what's
+  // loaded on screen yet); any filter/search/status-tab shows the exact matching count, since
+  // those are fully fetched from the server (see loadAllOfStatus / loadOrdersForDay above).
+  const showingAll = curStatusFilter==='all' && !document.getElementById('oSearch').value && !document.getElementById('oCourierFilter').value && !document.getElementById('oDateFilter').value;
+  const headerCount = (showingAll && trueOrderTotal != null) ? trueOrderTotal : list.length;
+  if(countEl) countEl.innerHTML = `${headerCount} Orders`;
 
   if(list.length===0){
     wrap.className = '';
@@ -1729,6 +1734,7 @@ function openViewOrderModal(id){
     <p><strong>Customer:</strong> ${esc(o.customerName)||'—'} ${o.isReturningCustomer?'<span class="returning-tag">পুরনো কাস্টমার</span>':''}</p>
     <p><strong>Phone:</strong> ${esc(o.phone)||'—'}</p>
     <p><strong>Address:</strong> ${esc(o.address)||'—'} ${o.city?`(${esc(o.city)}${o.zone?', '+esc(o.zone):''})`:''}</p>
+    <p><strong>IP Address:</strong> ${o.customerIp ? `<code>${esc(o.customerIp)}</code>` : '<span style="color:var(--muted);">জানা যায়নি</span>'}</p>
     <p><strong>Courier:</strong> ${o.courier||'—'} &nbsp; <strong>Status:</strong> ${o.status||'Processing'}</p>
     ${o.notes ? `<p><strong>Notes:</strong> ${esc(o.notes)}</p>` : ''}
     <table style="width:100%;margin-top:10px;border-collapse:collapse;">
@@ -1827,9 +1833,15 @@ function scheduleStatsRefresh(){
   clearTimeout(statsTimer);
   statsTimer = setTimeout(refreshServerStats, 800);
 }
+let trueOrderTotal = null; // true total order count from the server (not just what's loaded on screen)
 function paintStats(c, revenue, returning, total){
   const set = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent = v; };
-  if(total != null) set('statTotal', total);
+  if(total != null){
+    set('statTotal', total);
+    const changed = trueOrderTotal !== total;
+    trueOrderTotal = total;
+    if(changed) renderOrderTable(); // keep the orders-list header's total in sync once the server count arrives/changes
+  }
   set('statProcessing', c['Processing']); set('statPaymentPending', c['Payment Pending']);
   set('statOnHold', c['On Hold']); set('statDelivered', c['Delivered']);
   set('statCompleted', c['Completed']); set('statCanceled', c['Canceled']);
