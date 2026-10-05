@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://res.cloudinary.com">
 <link rel="preconnect" href="https://www.gstatic.com">
 <link rel="dns-prefetch" href="https://connect.facebook.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --primary:#7C3AED;
@@ -18,16 +21,17 @@
     --card-bg:#ffffff;
     --text:#222;
     --text-light:#666;
+    --head:'Baloo Da 2','Hind Siliguri',sans-serif;
     --border:#e7e2f0;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);}
+  body{font-family:'Hind Siliguri','Baloo Da 2',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);}
   a{text-decoration:none;color:inherit;}
 
   /* Header */
   header{position:sticky;top:0;z-index:100;background:var(--card-bg);border-bottom:1px solid var(--border);}
   .header-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px;max-width:1200px;margin:0 auto;}
-  .logo{font-size:20px;font-weight:700;color:var(--primary);white-space:nowrap;}
+  .logo{font-family:var(--head);font-size:20px;font-weight:700;color:var(--primary);white-space:nowrap;}
   .search-wrap{flex:1;max-width:500px;position:relative;}
   .search-wrap input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;}
   .header-icons{display:flex;align-items:center;gap:16px;}
@@ -54,7 +58,7 @@
   .card img{width:100%;aspect-ratio:1;object-fit:cover;background:#eee;}
   .card-body{padding:8px 10px;}
   .card-title{font-size:13px;line-height:1.3;height:34px;overflow:hidden;margin-bottom:4px;}
-  .card-price{font-weight:700;color:var(--primary);font-size:14px;}
+  .card-price{font-family:var(--head);font-weight:700;color:var(--primary);font-size:14px;}
   .card-oldprice{text-decoration:line-through;color:var(--text-light);font-size:12px;margin-left:6px;}
   .add-btn{width:100%;margin-top:6px;padding:7px;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;}
   .add-btn:active{background:var(--primary-dark);}
@@ -124,7 +128,7 @@
 
   /* Hero banner */
   .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:28px 20px;margin:0 0 16px;text-align:center;}
-  .hero h1{font-size:22px;font-weight:700;margin-bottom:6px;}
+  .hero h1{font-family:var(--head);font-size:22px;font-weight:700;margin-bottom:6px;}
   .hero p{font-size:13px;opacity:.9;}
 
   /* Trust badges */
@@ -150,14 +154,14 @@
   .qv-title{font-size:17px;font-weight:600;margin-bottom:6px;}
   .qv-desc{font-size:13px;color:var(--text-light);line-height:1.6;margin:10px 0;}
   .qv-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:14px;}
-  .qv-price{font-size:22px;font-weight:700;color:var(--primary);}
+  .qv-price{font-family:var(--head);font-size:22px;font-weight:700;color:var(--primary);}
 
   /* Order success modal */
   .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:400;padding:20px;}
   .success-overlay.show{display:flex;}
   .success-box{background:#fff;border-radius:16px;padding:32px 24px;max-width:340px;text-align:center;}
   .success-icon{width:56px;height:56px;background:#EDE4FB;color:var(--primary-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;}
-  .success-box h3{font-size:18px;margin-bottom:8px;}
+  .success-box h3{font-family:var(--head);font-size:18px;margin-bottom:8px;}
   .success-box p{font-size:13px;color:var(--text-light);margin-bottom:4px;}
   .order-id-tag{display:inline-block;background:var(--bg);padding:6px 14px;border-radius:6px;font-weight:600;font-size:13px;margin:10px 0 18px;letter-spacing:.5px;}
   .success-box button{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;}
@@ -166,7 +170,12 @@
   .whatsapp-fab{position:fixed;bottom:76px;right:16px;background:#25D366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:150;}
 
   /* Section title */
-  .section-title{font-size:16px;font-weight:600;margin:24px 0 12px;}
+  .section-title{font-family:var(--head);font-size:17px;font-weight:700;margin:24px 0 12px;}
+  /* Category-wise homepage sections */
+  .cat-section{margin-bottom:18px;}
+  .cat-section-head{display:flex;align-items:baseline;justify-content:space-between;margin:20px 0 10px;}
+  .cat-section-head h2{font-family:var(--head);font-size:16px;font-weight:700;color:var(--text);}
+  .cat-section-head a{font-size:12px;color:var(--primary);font-weight:600;white-space:nowrap;}
 
   /* Bottom navigation */
   .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card-bg);border-top:1px solid var(--border);display:flex;z-index:180;padding:6px 0 max(6px,env(safe-area-inset-bottom));}
@@ -190,6 +199,17 @@
   .banner-slide .slide-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;text-align:left;}
   .banner-dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;}
   .banner-dot.active{background:var(--primary);}
+  /* Default banner illustration (shown when admin hasn't uploaded any banner yet) */
+  .lp-default-banner{align-items:flex-start;justify-content:center;text-align:left;padding:0 0 0 22px;}
+  .lpd-glow{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;pointer-events:none;}
+  .lpd-g1{width:160px;height:160px;background:#F59E0B;top:-60px;right:-40px;}
+  .lpd-g2{width:120px;height:120px;background:#8B5CF6;bottom:-40px;left:40%;}
+  .lpd-text{position:relative;z-index:2;max-width:52%;}
+  .lpd-pill{display:inline-block;background:rgba(255,255,255,.22);color:#fff;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.5px;padding:4px 10px;border-radius:20px;margin-bottom:8px;}
+  .lpd-title{font-family:var(--head);font-weight:800;font-size:26px;color:#fff;line-height:1.05;}
+  .lpd-title span{color:#FDE68A;}
+  .lpd-sub{font-size:12.5px;color:rgba(255,255,255,.92);margin-top:6px;line-height:1.5;}
+  @media(min-width:600px){.lpd-title{font-size:34px;}.lpd-sub{font-size:14px;}}
   .buy-now-btn{width:100%;margin-top:10px;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px rgba(245,158,11,.35);}
 
   /* Image zoom overlay */
@@ -222,7 +242,7 @@
 
   /* Contact section */
   .contact-card{background:var(--bg);border-radius:10px;padding:16px;margin-bottom:12px;}
-  .contact-title{font-weight:600;font-size:14px;margin-bottom:10px;}
+  .contact-title{font-family:var(--head);font-weight:700;font-size:14px;margin-bottom:10px;}
   .contact-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;}
   .contact-item a{color:var(--primary);font-weight:600;}
 </style>
@@ -281,6 +301,7 @@
       </div>
     </div>
 
+    <div id="categorySections"></div>
     <div class="grid" id="productGrid"></div>
     <div style="text-align:center;margin:16px 0;">
       <button id="loadMoreBtn" class="btn-outline" style="padding:10px 24px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:14px;">আরও দেখুন</button>
@@ -490,6 +511,20 @@ const db = getFirestore(app);
 enableIndexedDbPersistence(db).catch((err)=>{
   console.warn('Offline persistence not enabled:', err.code);
 });
+
+// Fetch the visitor's public IP early (fraud/abuse tracking in admin — not a rules change,
+// just an extra field on the order). Fire-and-forget with a short timeout: if it's blocked
+// or slow, checkout must never wait on it — orderIp just stays empty.
+let customerIp = '';
+(function fetchCustomerIp(){
+  const ctrl = new AbortController();
+  const t = setTimeout(()=>ctrl.abort(), 2500);
+  fetch('https://api.ipify.org?format=json', {signal: ctrl.signal})
+    .then(r=>r.json())
+    .then(d=>{ customerIp = d.ip || ''; })
+    .catch(()=>{})
+    .finally(()=>clearTimeout(t));
+})();
 
 // ---------- Utility ----------
 function tk(n){ return "৳" + Number(n||0).toLocaleString('en-BD'); }
@@ -719,25 +754,19 @@ function applyDeepLink(){
   }
 }
 
-function renderProducts(){
-  const grid = document.getElementById('productGrid');
-  let list = allProducts.filter(p=>{
-    if(activeCategory!=='all' && p.category!==activeCategory) return false;
-    if(searchTerm && !(p.name||'').toLowerCase().includes(searchTerm.toLowerCase())) return false;
-    if(Number(p.price||0) > maxPrice) return false;
-    if(showOffersOnly && !(p.oldPrice && p.oldPrice > p.price)) return false;
-    return true;
-  });
+// Banner only makes sense on the "All" view — hide it whenever a specific category is selected
+// (chip click, ?category= deep link, or search), show it again on "All"/Home.
+function updateBannerVisibility(){
+  const show = activeCategory === 'all';
+  const homeSection = document.getElementById('homeSection');
+  const bannerDots = document.getElementById('bannerDots');
+  if(homeSection) homeSection.style.display = show ? '' : 'none';
+  if(bannerDots) bannerDots.style.display = show ? '' : 'none';
+}
 
-  if(sortMode==='price_low') list.sort((a,b)=>(a.price||0)-(b.price||0));
-  else if(sortMode==='price_high') list.sort((a,b)=>(b.price||0)-(a.price||0));
-
-  if(list.length===0){
-    grid.innerHTML = `<div class="empty-state">কোনো পণ্য পাওয়া যায়নি।</div>`;
-    return;
-  }
-
-  grid.innerHTML = list.map(p=>`
+// Single product card's HTML — shared by the flat grid and the category-wise sections below.
+function productCardHtml(p){
+  return `
     <div class="card" data-id="${p.id}">
       <img data-src="${cldResize(p.image,320)||''}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E" alt="${p.name||''}" class="lazy-img">
       <div class="card-body">
@@ -750,14 +779,15 @@ function renderProducts(){
         <div style="margin-top:4px;"><span style="background:${p.freeDelivery==='Yes'?'#FCEBEB':'#EDE4FB'};color:${p.freeDelivery==='Yes'?'#791F1F':'var(--primary-dark)'};font-size:10px;font-weight:700;padding:3px 7px;border-radius:5px;">${p.freeDelivery==='Yes'?'🚚 ডেলিভারি চার্জ প্রযোজ্য':'🚚 ফ্রি ডেলিভারি'}</span></div>
         <button class="add-btn" data-id="${p.id}">অর্ডার করুন</button>
       </div>
-    </div>
-  `).join('');
-
+    </div>`;
+}
+// Wires up click-to-view and add-to-cart on every .card inside a container (grid or a section).
+function bindCardEvents(container){
   setupLazyImages();
-  grid.querySelectorAll('.card').forEach(card=>{
+  container.querySelectorAll('.card').forEach(card=>{
     card.addEventListener('click', ()=>openQuickView(card.dataset.id));
   });
-  grid.querySelectorAll('.add-btn').forEach(btn=>{
+  container.querySelectorAll('.add-btn').forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
       const product = allProducts.find(p=>p.id===btn.dataset.id);
@@ -769,11 +799,88 @@ function renderProducts(){
       startIncompleteOrderTracking();
     });
   });
+}
+const CAT_SECTION_LIMIT = 8; // products shown per category row on the home page before "সব দেখুন"
+
+function renderProducts(){
+  updateBannerVisibility();
+  const grid = document.getElementById('productGrid');
+  const sectionsWrap = document.getElementById('categorySections');
+  let list = allProducts.filter(p=>{
+    if(activeCategory!=='all' && p.category!==activeCategory) return false;
+    if(searchTerm && !(p.name||'').toLowerCase().includes(searchTerm.toLowerCase())) return false;
+    if(Number(p.price||0) > maxPrice) return false;
+    if(showOffersOnly && !(p.oldPrice && p.oldPrice > p.price)) return false;
+    return true;
+  });
+
+  if(sortMode==='price_low') list.sort((a,b)=>(a.price||0)-(b.price||0));
+  else if(sortMode==='price_high') list.sort((a,b)=>(b.price||0)-(a.price||0));
+
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  // Only the unfiltered "All" home view groups products by category; any filter/search/
+  // category-pick falls back to one flat grid (and "Load More" only makes sense there too,
+  // since it reads more from Firestore — filters just narrow what's already loaded).
+  const noFiltersActive = activeCategory==='all' && !searchTerm && !showOffersOnly && maxPrice>=50000;
+
+  if(list.length===0){
+    const emptyHtml = `<div class="empty-state">কোনো পণ্য পাওয়া যায়নি।</div>`;
+    grid.style.display = 'none';
+    sectionsWrap.style.display = '';
+    sectionsWrap.innerHTML = emptyHtml;
+    loadMoreBtn.style.display = 'none';
+    return;
+  }
+
+  if(noFiltersActive && categories.length){
+    grid.style.display = 'none';
+    sectionsWrap.style.display = '';
+    const byCat = {};
+    categories.forEach(c=>byCat[c]=[]);
+    const others = [];
+    list.forEach(p=>{
+      if(p.category && byCat[p.category]) byCat[p.category].push(p);
+      else others.push(p);
+    });
+    let html = '';
+    categories.forEach(cat=>{
+      const items = byCat[cat];
+      if(!items.length) return;
+      html += `<div class="cat-section" data-cat="${cat}">
+        <div class="cat-section-head"><h2>${cat}</h2>${items.length>CAT_SECTION_LIMIT?`<a href="#" class="cat-see-all" data-cat="${cat}">সব দেখুন →</a>`:''}</div>
+        <div class="grid">${items.slice(0,CAT_SECTION_LIMIT).map(productCardHtml).join('')}</div>
+      </div>`;
+    });
+    if(others.length){
+      html += `<div class="cat-section" data-cat="">
+        <div class="cat-section-head"><h2>অন্যান্য পণ্য</h2></div>
+        <div class="grid">${others.slice(0,CAT_SECTION_LIMIT).map(productCardHtml).join('')}</div>
+      </div>`;
+    }
+    sectionsWrap.innerHTML = html;
+    bindCardEvents(sectionsWrap);
+    sectionsWrap.querySelectorAll('.cat-see-all').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        activeCategory = a.dataset.cat;
+        renderCategoryBar();
+        renderProducts();
+        try{
+          const url = new URL(window.location.href);
+          url.searchParams.set('category', activeCategory);
+          history.pushState({category:activeCategory}, '', url.toString());
+        }catch(err){}
+      });
+    });
+  }else{
+    sectionsWrap.style.display = 'none';
+    grid.style.display = '';
+    grid.innerHTML = list.map(productCardHtml).join('');
+    bindCardEvents(grid);
+  }
 
   // Only show "Load More" when browsing all products unfiltered — filters/search work on
   // what's already loaded, avoiding extra reads while narrowing results.
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  const noFiltersActive = activeCategory==='all' && !searchTerm && !showOffersOnly && maxPrice>=50000;
   loadMoreBtn.style.display = (noFiltersActive && !noMoreProducts) ? 'inline-block' : 'none';
 }
 
@@ -1033,7 +1140,7 @@ async function saveIncompleteOrder(){
   try{
     await setDoc(doc(db,'incomplete_orders', incompleteOrderDocId), {
       customerName: name, phone: phone, address: address,
-      items: cart, updatedAt: serverTimestamp()
+      items: cart, customerIp: customerIp || '', updatedAt: serverTimestamp()
     }, {merge:true});
   }catch(e){ console.error(e); }
 }
@@ -1132,6 +1239,7 @@ document.getElementById('placeOrderBtn').addEventListener('click', async ()=>{
       total: total,
       status: 'Processing', // admin manages full lifecycle from here
       isReturningCustomer: isReturning,
+      customerIp: customerIp || '',
       createdAt: serverTimestamp()
     });
 
@@ -1267,9 +1375,33 @@ function renderBanners(banners){
   if(bannerTimer) clearInterval(bannerTimer);
 
   if(banners.length === 0){
-    slidesWrap.innerHTML = `<div class="banner-slide active" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">
-      <div style="font-size:20px;font-weight:700;">LovePower - বিশ্বস্ত অনলাইন শপিং</div>
-      <div style="font-size:13px;opacity:.9;margin-top:4px;">সারা বাংলাদেশে হোম ডেলিভারি | ক্যাশ অন ডেলিভারি সুবিধা</div>
+    slidesWrap.innerHTML = `<div class="banner-slide active lp-default-banner" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));overflow:hidden;">
+      <span class="lpd-glow lpd-g1"></span><span class="lpd-glow lpd-g2"></span>
+      <div class="lpd-text">
+        <span class="lpd-pill">স্পেশাল অফার</span>
+        <div class="lpd-title">Love<span>Power</span></div>
+        <div class="lpd-sub">সারা বাংলাদেশে হোম ডেলিভারি · ক্যাশ অন ডেলিভারি</div>
+      </div>
+      <svg class="lpd-art" viewBox="0 0 260 200" aria-hidden="true" style="position:absolute;right:0;bottom:0;height:100%;opacity:.9;">
+        <circle cx="150" cy="104" r="86" fill="#8B5CF6" opacity=".45"/>
+        <circle cx="150" cy="104" r="62" fill="#A78BFA" opacity=".4"/>
+        <g transform="translate(112 38)">
+          <path d="M22 26V18a24 24 0 0 1 48 0v8" fill="none" stroke="#F59E0B" stroke-width="7" stroke-linecap="round"/>
+          <path d="M4 26h84l-7 104a8 8 0 0 1-8 7H19a8 8 0 0 1-8-7z" fill="#FFFFFF"/>
+          <path d="M4 26h84l-1 12H5z" fill="#EFE8FB"/>
+          <g transform="translate(46 88) scale(2.1)">
+            <path d="M0 8.3c-3.15-2.3-4.8-4.05-4.8-5.95 0-1.45 1.1-2.45 2.35-2.45 1 0 1.8.55 2.45 1.5.65-.95 1.45-1.5 2.45-1.5 1.25 0 2.35 1 2.35 2.45 0 1.9-1.65 3.65-4.8 5.95z" fill="#6D28D9"/>
+            <path d="M.6 -.6l-1.5 2.3h1.1l-.5 1.9 1.8-2.6h-1.1z" fill="#F59E0B"/>
+          </g>
+        </g>
+        <g transform="translate(200 128) rotate(12)">
+          <rect width="40" height="34" rx="5" fill="#F59E0B"/><rect x="16" width="8" height="34" fill="#FFFFFF"/>
+          <rect x="-3" y="-8" width="46" height="11" rx="3" fill="#D97706"/><rect x="16" y="-8" width="8" height="11" fill="#FFFFFF"/>
+        </g>
+        <path d="M222 40l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FDE68A"/>
+        <path d="M60 50l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#FDE68A" opacity=".9"/>
+        <circle cx="236" cy="96" r="4" fill="#FDE68A"/><circle cx="86" cy="30" r="3" fill="#fff" opacity=".7"/>
+      </svg>
     </div>`;
     dotsWrap.innerHTML = '';
     return;
